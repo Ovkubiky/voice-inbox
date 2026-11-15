@@ -1,0 +1,318 @@
+{
+ "component": "c5_heldout",
+ "model": "gemma3:12b",
+ "run_at": "2026-11-12T22:45:50",
+ "metrics": {
+  "phrases": 30,
+  "rules_only_accuracy": 0.9,
+  "rules+dateparser+llm_accuracy": 0.933,
+  "method_outcomes": {
+   "rules:ok": 27,
+   "dateparser:wrong": 1,
+   "None:wrong": 1,
+   "llm:ok": 1
+  }
+ },
+ "examples": [
+  {
+   "phrase": "через пів години",
+   "ref": "2026-11-17T10:00",
+   "gold": "2026-11-17T10:30",
+   "rules_only": "2026-11-17",
+   "full": "2026-11-17",
+   "method": "dateparser",
+   "ok": false,
+   "rules_ok": false
+  },
+  {
+   "phrase": "на вихідних",
+   "ref": "2026-11-17T10:00",
+   "gold": "2026-11-21",
+   "rules_only": null,
+   "full": null,
+   "method": null,
+   "ok": false,
+   "rules_ok": false
+  },
+  {
+   "phrase": "в неділю зранку",
+   "ref": "2026-11-17T10:00",
+   "gold": "2026-11-22T09:00",
+   "rules_only": "2026-11-22T09:00",
+   "full": "2026-11-22T09:00",
+   "method": "rules",
+   "ok": true,
+   "rules_ok": true
+  },
+  {
+   "phrase": "наступного понеділка о дев'ятій",
+   "ref": "2026-11-17T10:00",
+   "gold": "2026-11-23T09:00",
+   "rules_only": "2026-11-23T09:00",
+   "full": "2026-11-23T09:00",
+   "method": "rules",
+   "ok": true,
+   "rules_ok": true
+  },
+  {
+   "phrase": "о 15:30 в четвер",
+   "ref": "2026-11-17T10:00",
+   "gold": "2026-11-19T15:30",
+   "rules_only": "2026-11-19T15:30",
+   "full": "2026-11-19T15:30",
+   "method": "rules",
+   "ok": true,
+   "rules_ok": true
+  },
+  {
+   "phrase": "в обід у суботу",
+   "ref": "2026-11-17T10:00",
+   "gold": "2026-11-21T13:00",
+   "rules_only": "2026-11-21T13:00",
+   "full": "2026-11-21T13:00",
+   "method": "rules",
+   "ok": true,
+   "rules_ok": true
+  },
+  {
+   "phrase": "двадцять п'ятого листопада о дев'ятнадцятій",
+   "ref": "2026-11-17T10:00",
+   "gold": "2026-11-25T19:00",
+   "rules_only": "2026-11-25T19:00",
+   "full": "2026-11-25T19:00",
+   "method": "rules",
+   "ok": true,
+   "rules_ok": true
+  },
+  {
+   "phrase": "дванадцятого січня",
+   "ref": "2026-11-17T10:00",
+   "gold": "2027-01-12",
+   "rules_only": "2027-01-12",
+   "full": "2027-01-12",
+   "method": "rules",
+   "ok": true,
+   "rules_ok": true
+  },
+  {
+   "phrase": "в цю п'ятницю",
+   "ref": "2026-11-17T10:00",
+   "gold": "2026-11-20",
+   "rules_only": "2026-11-20",
+   "full": "2026-11-20",
+   "method": "rules",
+   "ok": true,
+   "rules_ok": true
+  },
+  {
+   "phrase": "о пів на дев'яту ранку в середу",
+   "ref": "2026-11-17T10:00",
+   "gold": "2026-11-18T08:30",
+   "rules_only": "2026-11-18T08:30",
+   "full": "2026-11-18T08:30",
+   "method": "rules",
+   "ok": true,
+   "rules_ok": true
+  },
+  {
+   "phrase": "через чотири дні",
+   "ref": "2026-11-17T10:00",
+   "gold": "2026-11-21",
+   "rules_only": "2026-11-21",
+   "full": "2026-11-21",
+   "method": "rules",
+   "ok": true,
+   "rules_ok": true
+  },
+  {
+   "phrase": "в понеділок увечері",
+   "ref": "2026-11-17T10:00",
+   "gold": "2026-11-23T19:00",
+   "rules_only": "2026-11-23T19:00",
+   "full": "2026-11-23T19:00",
+   "method": "rules",
+   "ok": true,
+   "rules_ok": true
+  },
+  {
+   "phrase": "завтра о 8:00",
+   "ref": "2026-11-17T10:00",
+   "gold": "2026-11-18T08:00",
+   "rules_only": "2026-11-18T08:00",
+   "full": "2026-11-18T08:00",
+   "method": "rules",
+   "ok": true,
+   "rules_ok": true
+  },
+  {
+   "phrase": "післязавтра о другій",
+   "ref": "2026-11-17T10:00",
+   "gold": "2026-11-19T14:00",
+   "rules_only": "2026-11-19T14:00",
+   "full": "2026-11-19T14:00",
+   "method": "rules",
+   "ok": true,
+   "rules_ok": true
+  },
+  {
+   "phrase": "сьогодні о пів на шосту",
+   "ref": "2026-11-17T10:00",
+   "gold": "2026-11-17T17:30",
+   "rules_only": "2026-11-17T17:30",
+   "full": "2026-11-17T17:30",
+   "method": "rules",
+   "ok": true,
+   "rules_ok": true
+  },
+  {
+   "phrase": "у вівторок о одинадцятій",
+   "ref": "2026-11-20T16:00",
+   "gold": "2026-11-24T11:00",
+   "rules_only": "2026-11-24T11:00",
+   "full": "2026-11-24T11:00",
+   "method": "rules",
+   "ok": true,
+   "rules_ok": true
+  },
+  {
+   "phrase": "наступної середи",
+   "ref": "2026-11-20T16:00",
+   "gold": "2026-11-25",
+   "rules_only": "2026-11-25",
+   "full": "2026-11-25",
+   "method": "rules",
+   "ok": true,
+   "rules_ok": true
+  },
+  {
+   "phrase": "в п'ятницю",
+   "ref": "2026-11-20T16:00",
+   "gold": "2026-11-27",
+   "rules_only": "2026-11-27",
+   "full": "2026-11-27",
+   "method": "rules",
+   "ok": true,
+   "rules_ok": true
+  },
+  {
+   "phrase": "через тиждень о десятій",
+   "ref": "2026-11-20T16:00",
+   "gold": "2026-11-27T10:00",
+   "rules_only": "2026-11-27T10:00",
+   "full": "2026-11-27T10:00",
+   "method": "rules",
+   "ok": true,
+   "rules_ok": true
+  },
+  {
+   "phrase": "до середи",
+   "ref": "2026-11-20T16:00",
+   "gold": "2026-11-25",
+   "rules_only": "2026-11-25",
+   "full": "2026-11-25",
+   "method": "rules",
+   "ok": true,
+   "rules_ok": true
+  },
+  {
+   "phrase": "першого грудня",
+   "ref": "2026-11-20T16:00",
+   "gold": "2026-12-01",
+   "rules_only": "2026-12-01",
+   "full": "2026-12-01",
+   "method": "rules",
+   "ok": true,
+   "rules_ok": true
+  },
+  {
+   "phrase": "о сьомій ранку в суботу",
+   "ref": "2026-11-20T16:00",
+   "gold": "2026-11-21T07:00",
+   "rules_only": "2026-11-21T07:00",
+   "full": "2026-11-21T07:00",
+   "method": "rules",
+   "ok": true,
+   "rules_ok": true
+  },
+  {
+   "phrase": "в неділю о дванадцятій",
+   "ref": "2026-11-20T16:00",
+   "gold": "2026-11-22T12:00",
+   "rules_only": "2026-11-22T12:00",
+   "full": "2026-11-22T12:00",
+   "method": "rules",
+   "ok": true,
+   "rules_ok": true
+  },
+  {
+   "phrase": "до кінця місяця",
+   "ref": "2026-11-20T16:00",
+   "gold": "2026-11-30",
+   "rules_only": "2026-11-30",
+   "full": "2026-11-30",
+   "method": "rules",
+   "ok": true,
+   "rules_ok": true
+  },
+  {
+   "phrase": "о дев'ятій вечора",
+   "ref": "2026-11-20T16:00",
+   "gold": "2026-11-20T21:00",
+   "rules_only": "2026-11-20T21:00",
+   "full": "2026-11-20T21:00",
+   "method": "rules",
+   "ok": true,
+   "rules_ok": true
+  },
+  {
+   "phrase": "завтра в обід",
+   "ref": "2026-11-29T12:00",
+   "gold": "2026-11-30T13:00",
+   "rules_only": "2026-11-30T13:00",
+   "full": "2026-11-30T13:00",
+   "method": "rules",
+   "ok": true,
+   "rules_ok": true
+  },
+  {
+   "phrase": "через два дні після обіду",
+   "ref": "2026-11-29T12:00",
+   "gold": "2026-12-01T14:00",
+   "rules_only": "2026-12-01T14:00",
+   "full": "2026-12-01T14:00",
+   "method": "rules",
+   "ok": true,
+   "rules_ok": true
+  },
+  {
+   "phrase": "наступного тижня в четвер",
+   "ref": "2026-11-29T12:00",
+   "gold": "2026-12-03",
+   "rules_only": "2026-12-03",
+   "full": "2026-12-03",
+   "method": "rules",
+   "ok": true,
+   "rules_ok": true
+  },
+  {
+   "phrase": "третього числа",
+   "ref": "2026-11-29T12:00",
+   "gold": "2026-12-03",
+   "rules_only": null,
+   "full": "2026-12-03",
+   "method": "llm",
+   "ok": true,
+   "rules_ok": false
+  },
+  {
+   "phrase": "в понеділок о 9:15",
+   "ref": "2026-11-29T12:00",
+   "gold": "2026-11-30T09:15",
+   "rules_only": "2026-11-30T09:15",
+   "full": "2026-11-30T09:15",
+   "method": "rules",
+   "ok": true,
+   "rules_ok": true
+  }
+ ]
+}

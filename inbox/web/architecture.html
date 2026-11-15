@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Voice Inbox Architecture</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root { --page: #ebe7dd; --paper: #f3efe5; --ink: #1d1a14; --faded: #5b5345; --line: rgba(29,26,20,.22); --sun: #ffe14d; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--page); color: var(--ink); font-family: "Libre Caslon Text", Georgia, serif; -webkit-font-smoothing: antialiased; }
+    body::before { content: ""; position: fixed; inset: 0; pointer-events: none; opacity: .55; mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.45  0 0 0 0 0.40  0 0 0 0 0.32  0 0 0 .35 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
+    a { color: inherit; }
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 22px 40px 60px; position: relative; }
+    .mono { font-family: "IBM Plex Mono", monospace; }
+    .strip { display: flex; justify-content: space-between; font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--faded); }
+    .strip a { text-decoration: none; color: var(--ink); }
+    .masthead { font-family: "UnifrakturMaguntia", serif; font-weight: 400; font-size: clamp(40px, 6.5vw, 78px); text-align: center; margin: 14px 0 0; line-height: 1; }
+    .dateline { border-top: 3px double var(--ink); border-bottom: 1px solid var(--ink); margin-top: 12px; padding: 6px 2px; display: flex; justify-content: space-between; font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; }
+    .kicker { font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--faded); }
+    h1 { font-family: "Playfair Display", serif; font-weight: 900; font-size: clamp(30px, 4vw, 48px); line-height: 1.05; margin: 22px 0 8px; }
+    .lede { font-size: 18px; line-height: 1.55; max-width: 860px; margin: 0 0 26px; }
+
+    /* pipeline diagram */
+    .flow { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; border: 2px solid var(--ink); outline: 1px solid var(--ink); outline-offset: 4px; background: var(--paper); margin: 10px 4px 0; }
+    .stage { padding: 14px 14px 16px; border-left: 1px solid var(--ink); position: relative; cursor: pointer; transition: background .15s; }
+    .stage:first-child { border-left: 0; }
+    .stage:hover, .stage.on { background: #f8eebe; }
+    .stage .n { font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: .1em; color: var(--faded); }
+    .stage h3 { font-family: "Playfair Display", serif; font-size: 21px; margin: 4px 0 4px; line-height: 1.1; }
+    .stage .tool { font-style: italic; font-size: 13px; color: var(--faded); line-height: 1.35; min-height: 36px; }
+    .stage .m { margin-top: 10px; font-family: "IBM Plex Mono", monospace; font-size: 12px; line-height: 1.6; }
+    .stage .m b { font-size: 20px; font-family: "Playfair Display", serif; }
+    .stage:not(:last-child)::after { content: "→"; position: absolute; right: -9px; top: 14px; background: var(--paper); font-size: 15px; z-index: 2; padding: 0 1px; }
+    .tag { display: inline-block; font-family: "IBM Plex Mono", monospace; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; border: 1px solid var(--ink); padding: 1px 5px; margin-top: 8px; }
+    .tag.llm { background: var(--sun); }
+    .row-label { font-family: "Playfair Display", serif; font-style: italic; font-size: 19px; margin: 34px 0 6px; }
+
+    /* example walk-through */
+    .grid { display: grid; grid-template-columns: 1.25fr 1fr; gap: 34px; margin-top: 34px; padding-top: 22px; border-top: 3px double var(--ink); }
+    h2 { font-family: "Playfair Display", serif; font-size: 26px; margin: 0 0 4px; }
+    .sub { font-style: italic; font-size: 14px; color: var(--faded); margin: 0 0 14px; padding-bottom: 10px; border-bottom: 1px solid var(--ink); }
+    .say { font-family: "Playfair Display", serif; font-style: italic; font-size: 20px; line-height: 1.4; margin: 0 0 16px; }
+    ol.trace { list-style: none; padding: 0; margin: 0; }
+    ol.trace li { display: grid; grid-template-columns: 54px 1fr; gap: 12px; padding: 9px 0; border-top: 1px solid var(--line); font-size: 15px; line-height: 1.45; }
+    ol.trace li.on { background: #f8eebe; }
+    ol.trace .c { font-family: "IBM Plex Mono", monospace; font-size: 12px; font-weight: 500; padding-top: 2px; }
+    code { font-family: "IBM Plex Mono", monospace; font-size: 12.5px; background: var(--paper); border: 1px solid var(--line); padding: 0 4px; }
+    table { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+    th, td { text-align: left; padding: 6px 4px; border-bottom: 1px solid var(--line); }
+    th { font-family: "IBM Plex Mono", monospace; font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--faded); border-bottom: 1px solid var(--ink); }
+    td.v { font-family: "IBM Plex Mono", monospace; text-align: right; }
+    td.win { font-weight: 700; }
+    .box { border: 2px solid var(--ink); outline: 1px solid var(--ink); outline-offset: 3px; padding: 14px 16px; margin-top: 26px; background: var(--paper); }
+    .box h3 { font-family: "Playfair Display", serif; font-size: 19px; margin: 0 0 6px; text-align: center; }
+    .box ul { margin: 0; padding-left: 18px; font-size: 14.5px; line-height: 1.55; }
+    .colophon { border-top: 3px double var(--ink); margin-top: 34px; padding-top: 8px; display: flex; justify-content: space-between; font-family: "IBM Plex Mono", monospace; font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--faded); }
+    @media (max-width: 900px) {
+      .wrap { padding: 16px; }
+      .flow { grid-template-columns: 1fr 1fr; }
+      .stage { border-left: 0; border-top: 1px solid var(--ink); }
+      .stage::after { display: none; }
+      .grid { grid-template-columns: 1fr; }
+    }
+
+    .pipe { margin-top: 40px; }
+    .io { text-align: center; font-family: "Playfair Display", serif; font-size: 22px; margin: 0 0 22px; }
+    .io.out { margin: 26px 0 0; font-family: "Libre Caslon Text", serif; font-size: 20px; }
+    .pill { font-family: "IBM Plex Mono", monospace; font-size: 12px; text-transform: uppercase; border: 1px solid var(--ink); padding: 2px 7px; margin-right: 4px; vertical-align: 2px; }
+    .down { text-align: center; font-size: 28px; margin: 10px 0; }
+    .stage { padding: 22px 18px; text-align: center; cursor: default; }
+    .stage h3 { font-size: 24px; margin: 8px 0 2px; }
+    .stage .tool { min-height: 0; font-size: 15px; margin: 0; }
+    .stage .m { font-size: 13px; margin-top: 12px; }
+    .stage .m b { font-size: 30px; }
+    .stage.llm { background: #fbf0bd; }
+    .stage.e2e { background: var(--ink); color: var(--paper); }
+    .stage.e2e .tool, .stage.e2e .n { color: #cfc6b4; }
+    .stage:not(:last-child)::after { top: 50%; transform: translateY(-50%); }
+    .stage.e2e::after { display: none; }
+    .legend { text-align: center; font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--faded); margin-top: 30px; }
+    .sw { display: inline-block; width: 12px; height: 12px; background: #fbf0bd; border: 1px solid var(--ink); vertical-align: -2px; }
+    .sw.plain { background: var(--paper); }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <div class="strip"><a href="/">← Inbox</a><a href="/gazette">Gazette →</a></div>
+  <p class="masthead">How it works</p>
+  <div class="dateline"><span>Voice note → tasks · events · notes · ideas</span><span>100% local · no cloud</span></div>
+
+  <div class="pipe">
+    <div class="io">🎙️ <i>«Треба купити молоко. І в четвер о третій дзвінок з Андрієм.»</i></div>
+    <div class="flow">
+      <div class="stage"><span class="n">C1</span><h3>Speech → text</h3><p class="tool">Parakeet</p><div class="m">WER <b>0.18</b></div></div>
+      <div class="stage"><span class="n">C2</span><h3>Clean up</h3><p class="tool">rules</p><div class="m">WER <b>0.18</b></div></div>
+      <div class="stage llm"><span class="n">C3</span><h3>Split &amp; type</h3><p class="tool">gemma3</p><div class="m">F1 <b>0.96</b></div></div>
+      <div class="stage llm"><span class="n">C4</span><h3>Fields</h3><p class="tool">gemma3</p><div class="m">title <b>0.96</b></div></div>
+      <div class="stage"><span class="n">C5</span><h3>Dates</h3><p class="tool">rules</p><div class="m">acc <b>0.98</b></div></div>
+    </div>
+    <div class="down">↓</div>
+    <div class="flow">
+      <div class="stage llm"><span class="n">C6</span><h3>Project</h3><p class="tool">gemma3</p><div class="m">acc <b>0.80</b></div></div>
+      <div class="stage"><span class="n">C7</span><h3>Ask if missing</h3><p class="tool">rules</p><div class="m">P <b>1.00</b></div></div>
+      <div class="stage"><span class="n">C8</span><h3>Save · .ics</h3><p class="tool">SQLite</p><div class="m">valid <b>1.00</b></div></div>
+      <div class="stage llm"><span class="n">C9</span><h3>Gazette</h3><p class="tool">gemma3</p><div class="m">bad ids <b>0.00</b></div></div>
+      <div class="stage e2e"><span class="n">E2E</span><h3>Whole note</h3><p class="tool">text · audio</p><div class="m"><b>0.60</b> · 0.51</div></div>
+    </div>
+    <div class="io out">✓ <span class="pill">task</span> купити молоко &nbsp;&nbsp; <span class="pill">event</span> Чт 15:00 · Андрій</div>
+    <p class="legend"><span class="sw"></span> LLM &nbsp;&nbsp; <span class="sw plain"></span> rules / code</p>
+  </div>
+</div>
+</body>
+</html>

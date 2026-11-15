@@ -1,0 +1,716 @@
+{
+ "n001#0": {
+  "title": "Купити молоко і хліб",
+  "date_phrase": null,
+  "people": [],
+  "project_hint": null,
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n001#1": {
+  "title": "Дзвінок з Андрієм",
+  "date_phrase": "в четвер о третій",
+  "people": [
+   "Андрій"
+  ],
+  "project_hint": "курсова",
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n003#0": {
+  "title": "Записатися до стоматолога",
+  "date_phrase": "завтра зранку",
+  "people": [],
+  "project_hint": null,
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n004#0": {
+  "title": "Вечеря з Олею і Марком",
+  "date_phrase": "в п'ятницю о сьомій",
+  "people": [
+   "Олена",
+   "Марк"
+  ],
+  "project_hint": null,
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n005#0": {
+  "title": "Задеплоїти бекенд",
+  "date_phrase": "до кінця тижня",
+  "people": [],
+  "project_hint": null,
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n005#1": {
+  "title": "Написати Ірині про дедлайн",
+  "date_phrase": null,
+  "people": [
+   "Ірина"
+  ],
+  "project_hint": null,
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n006#0": {
+  "title": "Поставити зустріч з Олею",
+  "date_phrase": null,
+  "people": [
+   "Оля"
+  ],
+  "project_hint": null,
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n007#0": {
+  "title": "Оплатити інтернет",
+  "date_phrase": "післязавтра",
+  "people": [],
+  "project_hint": null,
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n008#0": {
+  "title": "Зробити віджет",
+  "date_phrase": null,
+  "people": [],
+  "project_hint": null,
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n009#0": {
+  "title": "Тренування",
+  "date_phrase": "сьогодні о шостій",
+  "people": [],
+  "project_hint": null,
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n009#1": {
+  "title": "Купити нову пляшку для води",
+  "date_phrase": null,
+  "people": [],
+  "project_hint": null,
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n010#1": {
+  "title": "Показати чернетку науковому керівнику",
+  "date_phrase": "п'ятнадцятого грудня",
+  "people": [
+   "науковий керівник"
+  ],
+  "project_hint": "курсова",
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n011#0": {
+  "title": "Мітинг з командою",
+  "date_phrase": "в наступну середу о десятій",
+  "people": [
+   "команда"
+  ],
+  "project_hint": "реліз",
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n012#0": {
+  "title": "Купити подарунок мамі",
+  "date_phrase": "двадцятого листопада",
+  "people": [
+   "мама"
+  ],
+  "project_hint": null,
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n013#0": {
+  "title": "Їдемо у Львів",
+  "date_phrase": "через два тижні",
+  "people": [],
+  "project_hint": "Львів",
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n013#1": {
+  "title": "Забронювати готель",
+  "date_phrase": null,
+  "people": [],
+  "project_hint": "Львів",
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n013#2": {
+  "title": "Купити квитки на потяг",
+  "date_phrase": null,
+  "people": [],
+  "project_hint": "Львів",
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n014#0": {
+  "title": "Записати про WER у статті про Parakeet",
+  "date_phrase": null,
+  "people": [],
+  "project_hint": "Parakeet",
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n015#0": {
+  "title": "Подзвонити в банк",
+  "date_phrase": "у понеділок о дев'ятій ранку",
+  "people": [],
+  "project_hint": null,
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n016#0": {
+  "title": "Забронювати готель у Львові",
+  "date_phrase": null,
+  "people": [],
+  "project_hint": "Львів",
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n017#0": {
+  "title": "Стендап",
+  "date_phrase": "завтра о дев'ятій тридцять",
+  "people": [],
+  "project_hint": null,
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n017#1": {
+  "title": "Рев'ю пул реквесту від Максима",
+  "date_phrase": "завтра о дванадцятій",
+  "people": [
+   "Максим"
+  ],
+  "project_hint": null,
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n018#0": {
+  "title": "Прибрати на балконі",
+  "date_phrase": null,
+  "people": [],
+  "project_hint": null,
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n019#0": {
+  "title": "Скинути презентацію",
+  "date_phrase": "до обіду",
+  "people": [
+   "йому"
+  ],
+  "project_hint": null,
+  "priority": "normal",
+  "unresolved_person": true
+ },
+ "n020#0": {
+  "title": "Подкаст про українську мову в айті",
+  "date_phrase": null,
+  "people": [
+   "Соломія"
+  ],
+  "project_hint": "подкаст",
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n021#0": {
+  "title": "Нагадати Тарасу про звіт",
+  "date_phrase": null,
+  "people": [
+   "Тарас"
+  ],
+  "project_hint": null,
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n022#0": {
+  "title": "Подати документи на стипендію",
+  "date_phrase": "до кінця місяця",
+  "people": [],
+  "project_hint": null,
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n023#0": {
+  "title": "Захист проєкту з NLP",
+  "date_phrase": "тридцятого листопада о другій",
+  "people": [],
+  "project_hint": "NLP",
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n023#1": {
+  "title": "Підготувати слайди",
+  "date_phrase": null,
+  "people": [],
+  "project_hint": "NLP",
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n024#0": {
+  "title": "Зідзвон з клієнтом",
+  "date_phrase": "на одинадцяту завтра",
+  "people": [
+   "клієнт"
+  ],
+  "project_hint": null,
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n024#1": {
+  "title": "Оновити джиру",
+  "date_phrase": "завтра о одинадцятій",
+  "people": [],
+  "project_hint": null,
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n025#0": {
+  "title": "Записати рецепт",
+  "date_phrase": null,
+  "people": [],
+  "project_hint": null,
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n026#0": {
+  "title": "Зустріч з Богданом",
+  "date_phrase": null,
+  "people": [
+   "Богдан"
+  ],
+  "project_hint": "курсова",
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n027#0": {
+  "title": "Забрати посилку на Новій пошті",
+  "date_phrase": "завтра після обіду",
+  "people": [],
+  "project_hint": null,
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n027#1": {
+  "title": "Закинути гроші на телефон",
+  "date_phrase": null,
+  "people": [],
+  "project_hint": null,
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n028#0": {
+  "title": "Аналізи крові",
+  "date_phrase": "о восьмій ранку в п'ятницю",
+  "people": [],
+  "project_hint": null,
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n029#0": {
+  "title": "Подзвонити їй",
+  "date_phrase": null,
+  "people": [
+   "їй"
+  ],
+  "project_hint": null,
+  "priority": "normal",
+  "unresolved_person": true
+ },
+ "n030#0": {
+  "title": "Ідея на курсову",
+  "date_phrase": null,
+  "people": [],
+  "project_hint": "курсова",
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n031#0": {
+  "title": "Здати звіт по практиці",
+  "date_phrase": "наступного тижня",
+  "people": [],
+  "project_hint": "практикa",
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n031#1": {
+  "title": "Записатись на консультацію",
+  "date_phrase": "в понеділок о десятій",
+  "people": [],
+  "project_hint": null,
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n032#0": {
+  "title": "Андрій сказав про датасет",
+  "date_phrase": null,
+  "people": [
+   "Андрій"
+  ],
+  "project_hint": "Common Voice",
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n033#0": {
+  "title": "Кава з Дариною",
+  "date_phrase": "завтра о четвертій",
+  "people": [
+   "Дарина"
+  ],
+  "project_hint": null,
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n033#1": {
+  "title": "Дописати розділ курсової",
+  "date_phrase": "завтра ввечері",
+  "people": [],
+  "project_hint": "курсова",
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n034#0": {
+  "title": "Подзвонити Андрію",
+  "date_phrase": null,
+  "people": [
+   "Андрій"
+  ],
+  "project_hint": "курсова",
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n034#1": {
+  "title": "Замовити воду додому",
+  "date_phrase": null,
+  "people": [],
+  "project_hint": "курсова",
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n035#0": {
+  "title": "Зустріч з науковим керівником",
+  "date_phrase": "в середу о пів на третю",
+  "people": [
+   "науковий керівник"
+  ],
+  "project_hint": null,
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n036#0": {
+  "title": "Задеплоїти бекенд",
+  "date_phrase": null,
+  "people": [],
+  "project_hint": null,
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n037#0": {
+  "title": "Ідея: в застосунку показувати час нотаток",
+  "date_phrase": null,
+  "people": [],
+  "project_hint": null,
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n038#0": {
+  "title": "Повернути книжку в бібліотеку",
+  "date_phrase": "через три дні",
+  "people": [],
+  "project_hint": null,
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n038#1": {
+  "title": "День народження Віки",
+  "date_phrase": "в п'ятницю о шостій",
+  "people": [
+   "Віка"
+  ],
+  "project_hint": null,
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n039#0": {
+  "title": "Записатися до стоматолога",
+  "date_phrase": null,
+  "people": [],
+  "project_hint": null,
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n040#0": {
+  "title": "Подивитися лекцію з NLP",
+  "date_phrase": "сьогодні ввечері",
+  "people": [],
+  "project_hint": "проєкт",
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n041#0": {
+  "title": "Записати пароль від вайфаю",
+  "date_phrase": null,
+  "people": [
+   "бабуся"
+  ],
+  "project_hint": null,
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n042#0": {
+  "title": "Купити квитки на потяг до Львова",
+  "date_phrase": null,
+  "people": [],
+  "project_hint": "Львів",
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n043#0": {
+  "title": "Лекція",
+  "date_phrase": "в середу о першій",
+  "people": [],
+  "project_hint": null,
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n043#1": {
+  "title": "Йога",
+  "date_phrase": "в середу о п'ятій",
+  "people": [],
+  "project_hint": null,
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n044#0": {
+  "title": "Зустріч з ними",
+  "date_phrase": null,
+  "people": [
+   "вони"
+  ],
+  "project_hint": null,
+  "priority": "normal",
+  "unresolved_person": true
+ },
+ "n045#0": {
+  "title": "Концерт",
+  "date_phrase": "дев'ятнадцятого листопада о сьомій",
+  "people": [],
+  "project_hint": null,
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n045#1": {
+  "title": "Купити квитки",
+  "date_phrase": "сьогодні",
+  "people": [],
+  "project_hint": null,
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n046#0": {
+  "title": "Ідея для подарунка Марку",
+  "date_phrase": null,
+  "people": [
+   "Марк"
+  ],
+  "project_hint": null,
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n047#0": {
+  "title": "Відправити резюме в три компанії",
+  "date_phrase": "до неділі",
+  "people": [],
+  "project_hint": null,
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n047#1": {
+  "title": "Оновити лінкедін",
+  "date_phrase": null,
+  "people": [],
+  "project_hint": null,
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n048#0": {
+  "title": "Іспит з NLP",
+  "date_phrase": "Першого грудня о дев'ятій ранку",
+  "people": [],
+  "project_hint": "NLP",
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n049#0": {
+  "title": "Оновити джиру",
+  "date_phrase": null,
+  "people": [],
+  "project_hint": null,
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n050#0": {
+  "title": "Пробіжка",
+  "date_phrase": "завтра зранку",
+  "people": [],
+  "project_hint": null,
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n051#0": {
+  "title": "Дзвінок з дизайнером",
+  "date_phrase": null,
+  "people": [
+   "дизайнер"
+  ],
+  "project_hint": "макетах",
+  "priority": "normal",
+  "unresolved_person": true
+ },
+ "n052#0": {
+  "title": "Нова адреса у Максима",
+  "date_phrase": null,
+  "people": [
+   "Максим"
+  ],
+  "project_hint": null,
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n053#0": {
+  "title": "Онлайн мітинг з ментором",
+  "date_phrase": "наступної п'ятниці о третій",
+  "people": [
+   "ментор"
+  ],
+  "project_hint": null,
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n054#0": {
+  "title": "Зустріч випускників",
+  "date_phrase": "Двадцять восьмого листопада",
+  "people": [
+   "Олена"
+  ],
+  "project_hint": null,
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n055#0": {
+  "title": "Зробити гарячу клавішу",
+  "date_phrase": null,
+  "people": [],
+  "project_hint": null,
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n056#0": {
+  "title": "Обговорити бюджет поїздки",
+  "date_phrase": null,
+  "people": [
+   "нею"
+  ],
+  "project_hint": null,
+  "priority": "normal",
+  "unresolved_person": true
+ },
+ "n057#0": {
+  "title": "Здати лабораторну з NLP",
+  "date_phrase": "завтра о десятій ранку",
+  "people": [],
+  "project_hint": "NLP",
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n057#1": {
+  "title": "Подзвонити мамі",
+  "date_phrase": "завтра ввечері",
+  "people": [
+   "мама"
+  ],
+  "project_hint": null,
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n058#0": {
+  "title": "Ланч з Іриною",
+  "date_phrase": "сьогодні о дванадцятій",
+  "people": [
+   "Ірина"
+  ],
+  "project_hint": "новий проєкт",
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n058#1": {
+  "title": "Купити зарядку для ноутбука",
+  "date_phrase": null,
+  "people": [],
+  "project_hint": null,
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n059#0": {
+  "title": "Записатися на ТО машини",
+  "date_phrase": "через тиждень",
+  "people": [],
+  "project_hint": null,
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n059#1": {
+  "title": "Шини міняти",
+  "date_phrase": null,
+  "people": [],
+  "project_hint": null,
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n060#0": {
+  "title": "Зустріч з Тарасом",
+  "date_phrase": null,
+  "people": [
+   "Тарас"
+  ],
+  "project_hint": "звіт",
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n061#0": {
+  "title": "Показати чернетку керівнику",
+  "date_phrase": null,
+  "people": [
+   "керівник"
+  ],
+  "project_hint": null,
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n062#0": {
+  "title": "Зустріч з Вікою і Марком",
+  "date_phrase": "третього грудня о шостій вечора",
+  "people": [
+   "Віка",
+   "Марк"
+  ],
+  "project_hint": null,
+  "priority": "normal",
+  "unresolved_person": false
+ },
+ "n063#0": {
+  "title": "Прибирання в під'їзді",
+  "date_phrase": "Двадцять першого листопада о десятій",
+  "people": [],
+  "project_hint": null,
+  "priority": "normal",
+  "unresolved_person": false
+ }
+}

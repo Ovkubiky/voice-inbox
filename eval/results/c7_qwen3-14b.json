@@ -1,0 +1,584 @@
+{
+ "component": "c7_qwen3-14b",
+ "model": "qwen3:14b",
+ "run_at": "2026-11-13T13:29:40",
+ "metrics": {
+  "items": 81,
+  "ask_precision": 1.0,
+  "ask_recall": 0.5,
+  "ask_f1": 0.667,
+  "accuracy": 0.951,
+  "tp": 4,
+  "fp": 0,
+  "fn": 4
+ },
+ "examples": [
+  {
+   "id": "n019#0",
+   "ok": false,
+   "asked": null,
+   "gold_incomplete": true,
+   "text": "Скинути йому презентацію до обіду"
+  },
+  {
+   "id": "n029#0",
+   "ok": false,
+   "asked": null,
+   "gold_incomplete": true,
+   "text": "подзвонити їй щодо ключів"
+  },
+  {
+   "id": "n044#0",
+   "ok": false,
+   "asked": null,
+   "gold_incomplete": true,
+   "text": "Зустріч з ними треба перенести"
+  },
+  {
+   "id": "n056#0",
+   "ok": false,
+   "asked": null,
+   "gold_incomplete": true,
+   "text": "Обговорити з нею бюджет поїздки"
+  },
+  {
+   "id": "n001#0",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "купити молоко і хліб"
+  },
+  {
+   "id": "n001#1",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "в четвер о третій дзвінок з Андрієм по курсовій"
+  },
+  {
+   "id": "n003#0",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "завтра зранку записатися до стоматолога"
+  },
+  {
+   "id": "n004#0",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "в п'ятницю о сьомій вечеря з Олею і Марком в центрі"
+  },
+  {
+   "id": "n005#0",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "задеплоїти бекенд до кінця тижня"
+  },
+  {
+   "id": "n005#1",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "написати Ірині про дедлайн"
+  },
+  {
+   "id": "n006#0",
+   "ok": true,
+   "asked": "Коли саме «Поставити зустріч з Олею»? Назви день і, якщо є, час.",
+   "gold_incomplete": true,
+   "text": "поставити зустріч з Олею, обговорити подорож"
+  },
+  {
+   "id": "n007#0",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "післязавтра оплатити інтернет, там десь чотириста гривень"
+  },
+  {
+   "id": "n008#0",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "думка така: можна зробити віджет, який сам пропонує, коли поставити задачу в календар"
+  },
+  {
+   "id": "n009#0",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "Сьогодні о шостій тренування"
+  },
+  {
+   "id": "n009#1",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "треба купити нову пляшку для води"
+  },
+  {
+   "id": "n010#1",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "Дедлайн по курсовій п'ятнадцятого грудня, до того треба показати чернетку науковому керівнику"
+  },
+  {
+   "id": "n011#0",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "В наступну середу о десятій мітинг з командою по релізу"
+  },
+  {
+   "id": "n012#0",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "купити подарунок мамі на день народження, він двадцятого листопада"
+  },
+  {
+   "id": "n013#0",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "через два тижні їдемо у Львів"
+  },
+  {
+   "id": "n013#1",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "забронювати готель"
+  },
+  {
+   "id": "n013#2",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "купити квитки на потяг"
+  },
+  {
+   "id": "n014#0",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "у статті про Parakeet казали, що на українській WER близько семи відсотків"
+  },
+  {
+   "id": "n015#0",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "у понеділок о дев'ятій ранку подзвонити в банк щодо картки"
+  },
+  {
+   "id": "n016#0",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "забронювати готель у Львові, не забути"
+  },
+  {
+   "id": "n017#0",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "завтра о дев'ятій тридцять стендап"
+  },
+  {
+   "id": "n017#1",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "потім о дванадцятій рев'ю пул реквесту від Максима"
+  },
+  {
+   "id": "n018#0",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "нарешті прибрати на балконі"
+  },
+  {
+   "id": "n020#0",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "ідея: подкаст про українську мову в айті, можна запросити Соломію"
+  },
+  {
+   "id": "n021#0",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "через годину нагадати Тарасу про звіт"
+  },
+  {
+   "id": "n022#0",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "до кінця місяця подати документи на стипендію"
+  },
+  {
+   "id": "n023#0",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "Тридцятого листопада о другій захист проєкту з NLP"
+  },
+  {
+   "id": "n023#1",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "підготувати слайди за два дні до того"
+  },
+  {
+   "id": "n024#0",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "Зідзвон з клієнтом перенесли на одинадцяту завтра"
+  },
+  {
+   "id": "n024#1",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "треба оновити джиру після цього"
+  },
+  {
+   "id": "n025#0",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "рецепт: гречка, гриби, цибуля, сорок хвилин у духовці на двохстах градусах"
+  },
+  {
+   "id": "n026#0",
+   "ok": true,
+   "asked": "Коли саме «Зустріч з Богданом»? Назви день і, якщо є, час.",
+   "gold_incomplete": true,
+   "text": "призначити зустріч з Богданом по курсовій"
+  },
+  {
+   "id": "n027#0",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "завтра після обіду забрати посилку на Новій пошті, номер закінчується на сорок два"
+  },
+  {
+   "id": "n027#1",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "закинути гроші на телефон"
+  },
+  {
+   "id": "n028#0",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "О восьмій ранку в п'ятницю аналізи крові, не снідати"
+  },
+  {
+   "id": "n030#0",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "ідея на курсову: порівняти Parakeet і Whisper на суржику"
+  },
+  {
+   "id": "n031#0",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "наступного тижня здати звіт по практиці"
+  },
+  {
+   "id": "n031#1",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "в понеділок о десятій записатись на консультацію"
+  },
+  {
+   "id": "n032#0",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "Андрій сказав, що датасет можна взяти з Common Voice"
+  },
+  {
+   "id": "n033#0",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "завтра о четвертій кава з Дариною"
+  },
+  {
+   "id": "n033#1",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "ввечері дописати розділ курсової"
+  },
+  {
+   "id": "n034#0",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "подзвонити Андрію щодо курсової"
+  },
+  {
+   "id": "n034#1",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "замовити воду додому"
+  },
+  {
+   "id": "n035#0",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "В середу о пів на третю зустріч з науковим керівником"
+  },
+  {
+   "id": "n036#0",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "Не забути задеплоїти бекенд"
+  },
+  {
+   "id": "n037#0",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "ідея: в застосунку показувати, скільки часу займає кожна нотатка"
+  },
+  {
+   "id": "n038#0",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "через три дні повернути книжку в бібліотеку"
+  },
+  {
+   "id": "n038#1",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "в п'ятницю о шостій день народження Віки"
+  },
+  {
+   "id": "n039#0",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "записатися до стоматолога, нагадай"
+  },
+  {
+   "id": "n040#0",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "сьогодні ввечері подивитися лекцію з NLP, вона потрібна для проєкту"
+  },
+  {
+   "id": "n041#0",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "пароль від вайфаю в бабусі: сім, три, нуль, нуль, дев'ять, вісім"
+  },
+  {
+   "id": "n042#0",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "купити квитки на потяг до Львова"
+  },
+  {
+   "id": "n043#0",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "в середу о першій лекція"
+  },
+  {
+   "id": "n043#1",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "о п'ятій ще йога"
+  },
+  {
+   "id": "n045#0",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "Дев'ятнадцятого листопада о сьомій концерт"
+  },
+  {
+   "id": "n045#1",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "купити квитки сьогодні"
+  },
+  {
+   "id": "n046#0",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "ідея для подарунка Марку: навушники або книжка про дизайн"
+  },
+  {
+   "id": "n047#0",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "Відправити резюме в три компанії до неділі"
+  },
+  {
+   "id": "n047#1",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "оновити лінкедін"
+  },
+  {
+   "id": "n048#0",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "Першого грудня о дев'ятій ранку іспит з NLP"
+  },
+  {
+   "id": "n049#0",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "треба оновити джиру"
+  },
+  {
+   "id": "n050#0",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "завтра зранку пробіжка, п'ять кілометрів"
+  },
+  {
+   "id": "n051#0",
+   "ok": true,
+   "asked": "Коли саме «Дзвінок з дизайнером»? Назви день і, якщо є, час.",
+   "gold_incomplete": true,
+   "text": "Поставити дзвінок з дизайнером по макетах"
+  },
+  {
+   "id": "n052#0",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "у Максима нова адреса, Шевченка двадцять п'ять, квартира дванадцять"
+  },
+  {
+   "id": "n053#0",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "наступної п'ятниці о третій онлайн мітинг з ментором, лінк скинуть у слек"
+  },
+  {
+   "id": "n054#0",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "Двадцять восьмого листопада зустріч випускників, треба відповісти Олені, чи я буду"
+  },
+  {
+   "id": "n055#0",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "ідея: зробити гарячу клавішу, щоб записувати нотатку, не відкриваючи меню"
+  },
+  {
+   "id": "n057#0",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "завтра о десятій ранку здати лабораторну з NLP"
+  },
+  {
+   "id": "n057#1",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "ввечері подзвонити мамі"
+  },
+  {
+   "id": "n058#0",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "Сьогодні о дванадцятій ланч з Іриною, обговорити новий проєкт"
+  },
+  {
+   "id": "n058#1",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "купити зарядку для ноутбука"
+  },
+  {
+   "id": "n059#0",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "через тиждень записатися на ТО машини"
+  },
+  {
+   "id": "n059#1",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "шини міняти десь при плюс семи"
+  },
+  {
+   "id": "n060#0",
+   "ok": true,
+   "asked": "Коли саме «Зустріч з Тарасом»? Назви день і, якщо є, час.",
+   "gold_incomplete": true,
+   "text": "зустріч з Тарасом по звіту"
+  },
+  {
+   "id": "n061#0",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "Не забути показати чернетку керівнику"
+  },
+  {
+   "id": "n062#0",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "Третього грудня о шостій вечора зустріч з Вікою і Марком у кафе"
+  },
+  {
+   "id": "n063#0",
+   "ok": true,
+   "asked": null,
+   "gold_incomplete": false,
+   "text": "Двадцять першого листопада о десятій прибирання в під'їзді"
+  }
+ ]
+}

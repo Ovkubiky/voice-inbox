@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Voice Inbox</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <div class="rail left" id="rail-date"></div>
+  <div class="rail right" id="rail-time"></div>
+
+  <header class="top">
+    <div class="mark"><span class="dot" id="status-dot"></span><em>Voice Inbox</em><span class="mono" id="status-text">connecting…</span></div>
+    <nav>
+      <a class="link" href="/gazette">Today's Gazette</a>
+      <button class="link" id="evals-btn">Evaluation</button>
+      <a class="link" href="/architecture">Architecture</a>
+    </nav>
+  </header>
+  <div class="dateline"><div><span>Vol. I · No. <span id="dl-no">1</span></span><span id="dl-date"></span><span class="opt">Local edition · nothing leaves this laptop</span></div></div>
+
+  <main>
+    <figure class="hero">
+      <div class="frame">
+        <img id="art-a" alt="">
+        <img id="art-b" alt="">
+        <h1 class="hero-title"><em>The</em><span id="hero-day">Sunday Inbox</span></h1>
+      </div>
+      <figcaption>
+        <a class="summary" id="summary" href="/gazette"><span class="kicker mono">Today's Gazette</span><span id="summary-text">Your morning edition is ready to print.</span> <span class="read">Read it →</span></a>
+        <p class="caption mono" id="art-caption"></p>
+      </figcaption>
+    </figure>
+
+    <section class="capture" id="capture">
+      <button class="sticker" id="mic" title="Record (R)">
+        <svg viewBox="0 0 200 200" class="burst"><polygon id="burst-poly"/></svg>
+        <span class="sticker-text" id="sticker-text">Speak<br>now →</span>
+      </button>
+      <div class="capture-body">
+        <p class="kicker mono" id="capture-kicker">New note</p>
+        <h2 class="capture-title" id="capture-title">Say it out loud.</h2>
+        <p class="status-line" id="status-line">Ramble in Ukrainian — the inbox pulls out the tasks, dates and people for you.</p>
+        <form id="text-form" class="write">
+          <input id="text" class="underline big" placeholder="Or write it down…" autocomplete="off">
+          <button class="add" type="submit" title="Add note">Add</button>
+        </form>
+        <p class="mono hint"><kbd>R</kbd> speak <span>·</span> <kbd>/</kbd> write <span>·</span> <kbd>⌃⌥Space</kbd> from any app</p>
+      </div>
+    </section>
+
+    <section class="history" id="history">
+      <div class="history-head"><h2 class="label">Recent notes</h2><span class="mono count" id="history-count"></span></div>
+      <ol id="history-list"><li class="h-empty">No notes yet — say something.</li></ol>
+      <button class="link mono more" id="history-more" hidden>Show more ↓</button>
+    </section>
+
+    <div class="controls">
+      <p class="arrange">Arrange by
+        <span id="group-seg">
+          <button data-group="type">type</button> ·
+          <button data-group="project">project</button> ·
+          <button data-group="when">when</button> ·
+          <button data-group="status">status</button>
+        </span>
+      </p>
+      <input id="search" class="underline search" placeholder="Find a note, person or project…" autocomplete="off">
+    </div>
+
+    <section id="content"></section>
+
+    <footer class="mono foot">Local · Parakeet TDT v3 + <span id="foot-llm">gemma3:12b</span> · paintings: The Met Open Access (public domain)</footer>
+  </main>
+
+  <aside class="drawer" id="drawer">
+    <div class="drawer-head">
+      <h2 class="label">Evaluation</h2>
+      <button class="link" id="drawer-close">Close ✕</button>
+    </div>
+    <p class="drawer-sub">Every component, scored on the gold set. <a href="/ui" target="_blank">Full reports ↗</a></p>
+    <div id="drawer-body"></div>
+  </aside>
+  <div class="scrim" id="scrim"></div>
+  <div class="toast" id="toast"></div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

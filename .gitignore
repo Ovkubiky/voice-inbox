@@ -1,0 +1,21 @@
+# Personal data (voice notes, history exports) — never commit
+data/private/
+.env
+*.db
+.venv/
+__pycache__/
+macapp/build/
+macapp/.build/
+.DS_Store
+data/scripted/audio/*.m4a
+# Owner's voice recordings and runtime logs (may contain real notes) — never commit
+data/scripted/audio/*.wav
+logs/
+# Course material
+*.pdf
+# Drafts and personal working notes (the submitted report is README.md)
+report/report.md
+report/report_detailed.md
+report/video_script.md
+report/claude_design_prompt.md
+eval/results/run_log_*.txt

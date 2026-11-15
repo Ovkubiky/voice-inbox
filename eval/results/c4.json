@@ -1,0 +1,1246 @@
+{
+ "component": "c4",
+ "model": "gemma3:12b",
+ "run_at": "2026-11-12T22:45:33",
+ "metrics": {
+  "items_evaluated": 81,
+  "title_token_f1": 0.914,
+  "title_match_rate(f1>=0.5)": 0.963,
+  "date_phrase_token_f1": 0.943,
+  "date_presence_accuracy": 0.951,
+  "people_f1": 0.907,
+  "unresolved_person_accuracy": 0.988
+ },
+ "examples": [
+  {
+   "id": "n004#0",
+   "ok": false,
+   "pred": {
+    "title": "Вечеря з Олею і Марком",
+    "date_phrase": "в п'ятницю о сьомій",
+    "people": [
+     "Олена",
+     "Марк"
+    ]
+   },
+   "gold": {
+    "title": "Вечеря з Олею і Марком",
+    "date_phrase": "в п'ятницю о сьомій",
+    "people": [
+     "Оля",
+     "Марко"
+    ]
+   }
+  },
+  {
+   "id": "n005#0",
+   "ok": false,
+   "pred": {
+    "title": "Задеплоїти бекенд",
+    "date_phrase": "до кінця тижня",
+    "people": [
+     "Ірина"
+    ]
+   },
+   "gold": {
+    "title": "Задеплоїти бекенд",
+    "date_phrase": "до кінця тижня",
+    "people": []
+   }
+  },
+  {
+   "id": "n006#0",
+   "ok": false,
+   "pred": {
+    "title": "Зустріч з Олею",
+    "date_phrase": null,
+    "people": [
+     "Олена"
+    ]
+   },
+   "gold": {
+    "title": "Зустріч з Олею",
+    "date_phrase": null,
+    "people": [
+     "Оля"
+    ]
+   }
+  },
+  {
+   "id": "n008#0",
+   "ok": false,
+   "pred": {
+    "title": "Зробити віджет",
+    "date_phrase": null,
+    "people": []
+   },
+   "gold": {
+    "title": "Віджет пропонує час для задачі",
+    "date_phrase": null,
+    "people": []
+   }
+  },
+  {
+   "id": "n010#1",
+   "ok": false,
+   "pred": {
+    "title": "Показати чернетку науковому керівнику",
+    "date_phrase": "п'ятнадцятого грудня",
+    "people": [
+     "науковий керівник"
+    ]
+   },
+   "gold": {
+    "title": "Показати чернетку науковому керівнику",
+    "date_phrase": null,
+    "people": []
+   }
+  },
+  {
+   "id": "n013#1",
+   "ok": false,
+   "pred": {
+    "title": "Забронювати готель",
+    "date_phrase": "через два тижні",
+    "people": []
+   },
+   "gold": {
+    "title": "Забронювати готель",
+    "date_phrase": null,
+    "people": []
+   }
+  },
+  {
+   "id": "n013#2",
+   "ok": false,
+   "pred": {
+    "title": "Купити квитки на потяг",
+    "date_phrase": "через два тижні",
+    "people": []
+   },
+   "gold": {
+    "title": "Купити квитки на потяг",
+    "date_phrase": null,
+    "people": []
+   }
+  },
+  {
+   "id": "n014#0",
+   "ok": false,
+   "pred": {
+    "title": "У статті про Parakeet казали",
+    "date_phrase": null,
+    "people": []
+   },
+   "gold": {
+    "title": "WER Parakeet на українській",
+    "date_phrase": null,
+    "people": []
+   }
+  },
+  {
+   "id": "n024#1",
+   "ok": false,
+   "pred": {
+    "title": "Оновити джиру",
+    "date_phrase": "завтра",
+    "people": []
+   },
+   "gold": {
+    "title": "Оновити джиру",
+    "date_phrase": null,
+    "people": []
+   }
+  },
+  {
+   "id": "n027#1",
+   "ok": false,
+   "pred": {
+    "title": "Закинути гроші на телефон",
+    "date_phrase": null,
+    "people": []
+   },
+   "gold": {
+    "title": "Поповнити телефон",
+    "date_phrase": null,
+    "people": []
+   }
+  },
+  {
+   "id": "n035#0",
+   "ok": false,
+   "pred": {
+    "title": "Зустріч з науковим керівником",
+    "date_phrase": "В середу о пів на третю",
+    "people": [
+     "науковий керівник"
+    ]
+   },
+   "gold": {
+    "title": "Зустріч з науковим керівником",
+    "date_phrase": "в середу о пів на третю",
+    "people": []
+   }
+  },
+  {
+   "id": "n041#0",
+   "ok": false,
+   "pred": {
+    "title": "Записати пароль від вайфаю в бабусі",
+    "date_phrase": null,
+    "people": [
+     "бабуся"
+    ]
+   },
+   "gold": {
+    "title": "Пароль від вайфаю в бабусі",
+    "date_phrase": null,
+    "people": []
+   }
+  },
+  {
+   "id": "n051#0",
+   "ok": false,
+   "pred": {
+    "title": "Поставити дзвінок з дизайнером",
+    "date_phrase": null,
+    "people": [
+     "дизайнер"
+    ]
+   },
+   "gold": {
+    "title": "Дзвінок з дизайнером по макетах",
+    "date_phrase": null,
+    "people": []
+   }
+  },
+  {
+   "id": "n053#0",
+   "ok": false,
+   "pred": {
+    "title": "Онлайн мітинг з ментором",
+    "date_phrase": "Наступної п'ятниці о третій",
+    "people": [
+     "ментор"
+    ]
+   },
+   "gold": {
+    "title": "Мітинг з ментором",
+    "date_phrase": "наступної п'ятниці о третій",
+    "people": []
+   }
+  },
+  {
+   "id": "n001#0",
+   "ok": true,
+   "pred": {
+    "title": "Купити молоко і хліб",
+    "date_phrase": null,
+    "people": []
+   },
+   "gold": {
+    "title": "Купити молоко і хліб",
+    "date_phrase": null,
+    "people": []
+   }
+  },
+  {
+   "id": "n001#1",
+   "ok": true,
+   "pred": {
+    "title": "Дзвінок з Андрієм",
+    "date_phrase": "в четвер о третій",
+    "people": [
+     "Андрій"
+    ]
+   },
+   "gold": {
+    "title": "Дзвінок з Андрієм",
+    "date_phrase": "в четвер о третій",
+    "people": [
+     "Андрій"
+    ]
+   }
+  },
+  {
+   "id": "n003#0",
+   "ok": true,
+   "pred": {
+    "title": "Записатися до стоматолога",
+    "date_phrase": "завтра зранку",
+    "people": []
+   },
+   "gold": {
+    "title": "Записатися до стоматолога",
+    "date_phrase": "завтра зранку",
+    "people": []
+   }
+  },
+  {
+   "id": "n005#1",
+   "ok": true,
+   "pred": {
+    "title": "Написати Ірині про дедлайн",
+    "date_phrase": null,
+    "people": [
+     "Ірина"
+    ]
+   },
+   "gold": {
+    "title": "Написати Ірині про дедлайн",
+    "date_phrase": null,
+    "people": [
+     "Ірина"
+    ]
+   }
+  },
+  {
+   "id": "n007#0",
+   "ok": true,
+   "pred": {
+    "title": "Оплатити інтернет",
+    "date_phrase": "післязавтра",
+    "people": []
+   },
+   "gold": {
+    "title": "Оплатити інтернет",
+    "date_phrase": "післязавтра",
+    "people": []
+   }
+  },
+  {
+   "id": "n009#0",
+   "ok": true,
+   "pred": {
+    "title": "Тренування",
+    "date_phrase": "Сьогодні о шостій",
+    "people": []
+   },
+   "gold": {
+    "title": "Тренування",
+    "date_phrase": "сьогодні о шостій",
+    "people": []
+   }
+  },
+  {
+   "id": "n009#1",
+   "ok": true,
+   "pred": {
+    "title": "Купити нову пляшку для води",
+    "date_phrase": null,
+    "people": []
+   },
+   "gold": {
+    "title": "Купити пляшку для води",
+    "date_phrase": null,
+    "people": []
+   }
+  },
+  {
+   "id": "n011#0",
+   "ok": true,
+   "pred": {
+    "title": "Мітинг з командою",
+    "date_phrase": "В наступну середу о десятій",
+    "people": []
+   },
+   "gold": {
+    "title": "Мітинг з командою по релізу",
+    "date_phrase": "в наступну середу о десятій",
+    "people": []
+   }
+  },
+  {
+   "id": "n012#0",
+   "ok": true,
+   "pred": {
+    "title": "Купити подарунок мамі",
+    "date_phrase": "двадцятого листопада",
+    "people": [
+     "мама"
+    ]
+   },
+   "gold": {
+    "title": "Купити подарунок мамі",
+    "date_phrase": "двадцятого листопада",
+    "people": [
+     "мама"
+    ]
+   }
+  },
+  {
+   "id": "n013#0",
+   "ok": true,
+   "pred": {
+    "title": "Їдемо у Львів",
+    "date_phrase": "Через два тижні",
+    "people": []
+   },
+   "gold": {
+    "title": "Поїздка у Львів",
+    "date_phrase": "через два тижні",
+    "people": []
+   }
+  },
+  {
+   "id": "n015#0",
+   "ok": true,
+   "pred": {
+    "title": "Подзвонити в банк",
+    "date_phrase": "У понеділок о дев'ятій ранку",
+    "people": []
+   },
+   "gold": {
+    "title": "Подзвонити в банк щодо картки",
+    "date_phrase": "у понеділок о дев'ятій ранку",
+    "people": []
+   }
+  },
+  {
+   "id": "n016#0",
+   "ok": true,
+   "pred": {
+    "title": "Забронювати готель у Львові",
+    "date_phrase": null,
+    "people": []
+   },
+   "gold": {
+    "title": "Забронювати готель у Львові",
+    "date_phrase": null,
+    "people": []
+   }
+  },
+  {
+   "id": "n017#0",
+   "ok": true,
+   "pred": {
+    "title": "Стендап",
+    "date_phrase": "Завтра о дев'ятій тридцять",
+    "people": []
+   },
+   "gold": {
+    "title": "Стендап",
+    "date_phrase": "завтра о дев'ятій тридцять",
+    "people": []
+   }
+  },
+  {
+   "id": "n017#1",
+   "ok": true,
+   "pred": {
+    "title": "Рев'ю пул реквесту",
+    "date_phrase": "о дванадцятій",
+    "people": [
+     "Максим"
+    ]
+   },
+   "gold": {
+    "title": "Рев'ю пул реквесту від Максима",
+    "date_phrase": "завтра о дванадцятій",
+    "people": [
+     "Максим"
+    ]
+   }
+  },
+  {
+   "id": "n018#0",
+   "ok": true,
+   "pred": {
+    "title": "Прибрати на балконі",
+    "date_phrase": null,
+    "people": []
+   },
+   "gold": {
+    "title": "Прибрати на балконі",
+    "date_phrase": null,
+    "people": []
+   }
+  },
+  {
+   "id": "n019#0",
+   "ok": true,
+   "pred": {
+    "title": "Скинути презентацію",
+    "date_phrase": "до обіду",
+    "people": []
+   },
+   "gold": {
+    "title": "Скинути презентацію",
+    "date_phrase": "до обіду",
+    "people": []
+   }
+  },
+  {
+   "id": "n020#0",
+   "ok": true,
+   "pred": {
+    "title": "Подкаст про українську мову",
+    "date_phrase": null,
+    "people": [
+     "Соломія"
+    ]
+   },
+   "gold": {
+    "title": "Подкаст про українську мову в айті",
+    "date_phrase": null,
+    "people": [
+     "Соломія"
+    ]
+   }
+  },
+  {
+   "id": "n021#0",
+   "ok": true,
+   "pred": {
+    "title": "Нагадати Тарасу про звіт",
+    "date_phrase": "Через годину",
+    "people": [
+     "Тарас"
+    ]
+   },
+   "gold": {
+    "title": "Нагадати Тарасу про звіт",
+    "date_phrase": "через годину",
+    "people": [
+     "Тарас"
+    ]
+   }
+  },
+  {
+   "id": "n022#0",
+   "ok": true,
+   "pred": {
+    "title": "Подати документи на стипендію",
+    "date_phrase": "До кінця місяця",
+    "people": []
+   },
+   "gold": {
+    "title": "Подати документи на стипендію",
+    "date_phrase": "до кінця місяця",
+    "people": []
+   }
+  },
+  {
+   "id": "n023#0",
+   "ok": true,
+   "pred": {
+    "title": "Захист проєкту з NLP",
+    "date_phrase": "Тридцятого листопада о другій",
+    "people": []
+   },
+   "gold": {
+    "title": "Захист проєкту з NLP",
+    "date_phrase": "тридцятого листопада о другій",
+    "people": []
+   }
+  },
+  {
+   "id": "n023#1",
+   "ok": true,
+   "pred": {
+    "title": "Підготувати слайди",
+    "date_phrase": "тридцятого листопада за два дні до того",
+    "people": []
+   },
+   "gold": {
+    "title": "Підготувати слайди",
+    "date_phrase": "за два дні до того",
+    "people": []
+   }
+  },
+  {
+   "id": "n024#0",
+   "ok": true,
+   "pred": {
+    "title": "Зідзвон з клієнтом",
+    "date_phrase": "одинадцяту завтра",
+    "people": []
+   },
+   "gold": {
+    "title": "Зідзвон з клієнтом",
+    "date_phrase": "на одинадцяту завтра",
+    "people": []
+   }
+  },
+  {
+   "id": "n026#0",
+   "ok": true,
+   "pred": {
+    "title": "Зустріч з Богданом",
+    "date_phrase": null,
+    "people": [
+     "Богдан"
+    ]
+   },
+   "gold": {
+    "title": "Зустріч з Богданом",
+    "date_phrase": null,
+    "people": [
+     "Богдан"
+    ]
+   }
+  },
+  {
+   "id": "n027#0",
+   "ok": true,
+   "pred": {
+    "title": "Забрати посилку на Новій пошті",
+    "date_phrase": "завтра після обіду",
+    "people": []
+   },
+   "gold": {
+    "title": "Забрати посилку на Новій пошті",
+    "date_phrase": "завтра після обіду",
+    "people": []
+   }
+  },
+  {
+   "id": "n028#0",
+   "ok": true,
+   "pred": {
+    "title": "Аналізи крові",
+    "date_phrase": "О восьмій ранку в п'ятницю",
+    "people": []
+   },
+   "gold": {
+    "title": "Аналізи крові",
+    "date_phrase": "о восьмій ранку в п'ятницю",
+    "people": []
+   }
+  },
+  {
+   "id": "n029#0",
+   "ok": true,
+   "pred": {
+    "title": "Подзвонити їй",
+    "date_phrase": null,
+    "people": []
+   },
+   "gold": {
+    "title": "Подзвонити щодо ключів",
+    "date_phrase": null,
+    "people": []
+   }
+  },
+  {
+   "id": "n030#0",
+   "ok": true,
+   "pred": {
+    "title": "Порівняти Parakeet і Whisper",
+    "date_phrase": null,
+    "people": []
+   },
+   "gold": {
+    "title": "Порівняти Parakeet і Whisper на суржику",
+    "date_phrase": null,
+    "people": []
+   }
+  },
+  {
+   "id": "n031#0",
+   "ok": true,
+   "pred": {
+    "title": "Здати звіт по практиці",
+    "date_phrase": "Наступного тижня",
+    "people": []
+   },
+   "gold": {
+    "title": "Здати звіт по практиці",
+    "date_phrase": "наступного тижня",
+    "people": []
+   }
+  },
+  {
+   "id": "n031#1",
+   "ok": true,
+   "pred": {
+    "title": "Записатись на консультацію",
+    "date_phrase": "в понеділок о десятій",
+    "people": []
+   },
+   "gold": {
+    "title": "Записатись на консультацію",
+    "date_phrase": "в понеділок о десятій",
+    "people": []
+   }
+  },
+  {
+   "id": "n032#0",
+   "ok": true,
+   "pred": {
+    "title": "Датасет з Common Voice",
+    "date_phrase": null,
+    "people": [
+     "Андрій"
+    ]
+   },
+   "gold": {
+    "title": "Датасет з Common Voice",
+    "date_phrase": null,
+    "people": [
+     "Андрій"
+    ]
+   }
+  },
+  {
+   "id": "n033#0",
+   "ok": true,
+   "pred": {
+    "title": "Кава з Дариною",
+    "date_phrase": "завтра о четвертій",
+    "people": [
+     "Дарина"
+    ]
+   },
+   "gold": {
+    "title": "Кава з Дариною",
+    "date_phrase": "завтра о четвертій",
+    "people": [
+     "Дарина"
+    ]
+   }
+  },
+  {
+   "id": "n033#1",
+   "ok": true,
+   "pred": {
+    "title": "Дописати розділ курсової",
+    "date_phrase": "завтра ввечері",
+    "people": []
+   },
+   "gold": {
+    "title": "Дописати розділ курсової",
+    "date_phrase": "завтра ввечері",
+    "people": []
+   }
+  },
+  {
+   "id": "n034#0",
+   "ok": true,
+   "pred": {
+    "title": "Подзвонити Андрію",
+    "date_phrase": null,
+    "people": [
+     "Андрій"
+    ]
+   },
+   "gold": {
+    "title": "Подзвонити Андрію щодо курсової",
+    "date_phrase": null,
+    "people": [
+     "Андрій"
+    ]
+   }
+  },
+  {
+   "id": "n034#1",
+   "ok": true,
+   "pred": {
+    "title": "Замовити воду додому",
+    "date_phrase": null,
+    "people": []
+   },
+   "gold": {
+    "title": "Замовити воду додому",
+    "date_phrase": null,
+    "people": []
+   }
+  },
+  {
+   "id": "n036#0",
+   "ok": true,
+   "pred": {
+    "title": "Задеплоїти бекенд",
+    "date_phrase": null,
+    "people": []
+   },
+   "gold": {
+    "title": "Задеплоїти бекенд",
+    "date_phrase": null,
+    "people": []
+   }
+  },
+  {
+   "id": "n037#0",
+   "ok": true,
+   "pred": {
+    "title": "Показувати час нотаток",
+    "date_phrase": null,
+    "people": []
+   },
+   "gold": {
+    "title": "Показувати час обробки нотатки",
+    "date_phrase": null,
+    "people": []
+   }
+  },
+  {
+   "id": "n038#0",
+   "ok": true,
+   "pred": {
+    "title": "Повернути книжку в бібліотеку",
+    "date_phrase": "Через три дні",
+    "people": []
+   },
+   "gold": {
+    "title": "Повернути книжку в бібліотеку",
+    "date_phrase": "через три дні",
+    "people": []
+   }
+  },
+  {
+   "id": "n038#1",
+   "ok": true,
+   "pred": {
+    "title": "День народження Віки",
+    "date_phrase": "в п'ятницю о шостій",
+    "people": [
+     "Віка"
+    ]
+   },
+   "gold": {
+    "title": "День народження Віки",
+    "date_phrase": "в п'ятницю о шостій",
+    "people": [
+     "Віка"
+    ]
+   }
+  },
+  {
+   "id": "n039#0",
+   "ok": true,
+   "pred": {
+    "title": "Записатися до стоматолога",
+    "date_phrase": null,
+    "people": []
+   },
+   "gold": {
+    "title": "Записатися до стоматолога",
+    "date_phrase": null,
+    "people": []
+   }
+  },
+  {
+   "id": "n040#0",
+   "ok": true,
+   "pred": {
+    "title": "Подивитися лекцію з NLP",
+    "date_phrase": "Сьогодні ввечері",
+    "people": []
+   },
+   "gold": {
+    "title": "Подивитися лекцію з NLP",
+    "date_phrase": "сьогодні ввечері",
+    "people": []
+   }
+  },
+  {
+   "id": "n042#0",
+   "ok": true,
+   "pred": {
+    "title": "Купити квитки на потяг",
+    "date_phrase": null,
+    "people": []
+   },
+   "gold": {
+    "title": "Купити квитки на потяг до Львова",
+    "date_phrase": null,
+    "people": []
+   }
+  },
+  {
+   "id": "n043#0",
+   "ok": true,
+   "pred": {
+    "title": "Лекція",
+    "date_phrase": "в середу о першій",
+    "people": []
+   },
+   "gold": {
+    "title": "Лекція",
+    "date_phrase": "в середу о першій",
+    "people": []
+   }
+  },
+  {
+   "id": "n043#1",
+   "ok": true,
+   "pred": {
+    "title": "Ще йога",
+    "date_phrase": "в середу о п'ятій",
+    "people": []
+   },
+   "gold": {
+    "title": "Йога",
+    "date_phrase": "в середу о п'ятій",
+    "people": []
+   }
+  },
+  {
+   "id": "n044#0",
+   "ok": true,
+   "pred": {
+    "title": "Зустріч з ними",
+    "date_phrase": null,
+    "people": []
+   },
+   "gold": {
+    "title": "Перенести зустріч",
+    "date_phrase": null,
+    "people": []
+   }
+  },
+  {
+   "id": "n045#0",
+   "ok": true,
+   "pred": {
+    "title": "Концерт",
+    "date_phrase": "Дев'ятнадцятого листопада о сьомій",
+    "people": []
+   },
+   "gold": {
+    "title": "Концерт",
+    "date_phrase": "дев'ятнадцятого листопада о сьомій",
+    "people": []
+   }
+  },
+  {
+   "id": "n045#1",
+   "ok": true,
+   "pred": {
+    "title": "Купити квитки",
+    "date_phrase": "сьогодні",
+    "people": []
+   },
+   "gold": {
+    "title": "Купити квитки на концерт",
+    "date_phrase": "сьогодні",
+    "people": []
+   }
+  },
+  {
+   "id": "n046#0",
+   "ok": true,
+   "pred": {
+    "title": "Подарунок Марку",
+    "date_phrase": null,
+    "people": [
+     "Марк"
+    ]
+   },
+   "gold": {
+    "title": "Подарунок Марку",
+    "date_phrase": null,
+    "people": [
+     "Марко"
+    ]
+   }
+  },
+  {
+   "id": "n047#0",
+   "ok": true,
+   "pred": {
+    "title": "Відправити резюме в три компанії",
+    "date_phrase": "до неділі",
+    "people": []
+   },
+   "gold": {
+    "title": "Відправити резюме в три компанії",
+    "date_phrase": "до неділі",
+    "people": []
+   }
+  },
+  {
+   "id": "n047#1",
+   "ok": true,
+   "pred": {
+    "title": "Оновити лінкедін",
+    "date_phrase": null,
+    "people": []
+   },
+   "gold": {
+    "title": "Оновити лінкедін",
+    "date_phrase": null,
+    "people": []
+   }
+  },
+  {
+   "id": "n048#0",
+   "ok": true,
+   "pred": {
+    "title": "Іспит з NLP",
+    "date_phrase": "Першого грудня о дев'ятій ранку",
+    "people": []
+   },
+   "gold": {
+    "title": "Іспит з NLP",
+    "date_phrase": "першого грудня о дев'ятій ранку",
+    "people": []
+   }
+  },
+  {
+   "id": "n049#0",
+   "ok": true,
+   "pred": {
+    "title": "Оновити джиру",
+    "date_phrase": null,
+    "people": []
+   },
+   "gold": {
+    "title": "Оновити джиру",
+    "date_phrase": null,
+    "people": []
+   }
+  },
+  {
+   "id": "n050#0",
+   "ok": true,
+   "pred": {
+    "title": "Пробіжка",
+    "date_phrase": "Завтра зранку",
+    "people": []
+   },
+   "gold": {
+    "title": "Пробіжка",
+    "date_phrase": "завтра зранку",
+    "people": []
+   }
+  },
+  {
+   "id": "n052#0",
+   "ok": true,
+   "pred": {
+    "title": "Нова адреса Максима",
+    "date_phrase": null,
+    "people": [
+     "Максим"
+    ]
+   },
+   "gold": {
+    "title": "Нова адреса Максима",
+    "date_phrase": null,
+    "people": [
+     "Максим"
+    ]
+   }
+  },
+  {
+   "id": "n054#0",
+   "ok": true,
+   "pred": {
+    "title": "Зустріч випускників",
+    "date_phrase": "двадцять восьмого листопада",
+    "people": []
+   },
+   "gold": {
+    "title": "Зустріч випускників",
+    "date_phrase": "двадцять восьмого листопада",
+    "people": []
+   }
+  },
+  {
+   "id": "n054#1",
+   "ok": true,
+   "pred": {
+    "title": "Відповісти Олені",
+    "date_phrase": null,
+    "people": [
+     "Олена"
+    ]
+   },
+   "gold": {
+    "title": "Відповісти Олені щодо зустрічі",
+    "date_phrase": null,
+    "people": [
+     "Олена"
+    ]
+   }
+  },
+  {
+   "id": "n055#0",
+   "ok": true,
+   "pred": {
+    "title": "Зробити гарячу клавішу",
+    "date_phrase": null,
+    "people": []
+   },
+   "gold": {
+    "title": "Гаряча клавіша для запису",
+    "date_phrase": null,
+    "people": []
+   }
+  },
+  {
+   "id": "n056#0",
+   "ok": true,
+   "pred": {
+    "title": "Обговорити бюджет поїздки",
+    "date_phrase": null,
+    "people": []
+   },
+   "gold": {
+    "title": "Обговорити бюджет поїздки",
+    "date_phrase": null,
+    "people": []
+   }
+  },
+  {
+   "id": "n057#0",
+   "ok": true,
+   "pred": {
+    "title": "Здати лабораторну з NLP",
+    "date_phrase": "завтра о десятій ранку",
+    "people": []
+   },
+   "gold": {
+    "title": "Здати лабораторну з NLP",
+    "date_phrase": "завтра о десятій ранку",
+    "people": []
+   }
+  },
+  {
+   "id": "n057#1",
+   "ok": true,
+   "pred": {
+    "title": "Подзвонити мамі",
+    "date_phrase": "завтра ввечері",
+    "people": [
+     "мама"
+    ]
+   },
+   "gold": {
+    "title": "Подзвонити мамі",
+    "date_phrase": "завтра ввечері",
+    "people": [
+     "мама"
+    ]
+   }
+  },
+  {
+   "id": "n058#0",
+   "ok": true,
+   "pred": {
+    "title": "Ланч з Іриною",
+    "date_phrase": "Сьогодні о дванадцятій",
+    "people": [
+     "Ірина"
+    ]
+   },
+   "gold": {
+    "title": "Ланч з Іриною",
+    "date_phrase": "сьогодні о дванадцятій",
+    "people": [
+     "Ірина"
+    ]
+   }
+  },
+  {
+   "id": "n058#1",
+   "ok": true,
+   "pred": {
+    "title": "Купити зарядку для ноутбука",
+    "date_phrase": null,
+    "people": []
+   },
+   "gold": {
+    "title": "Купити зарядку для ноутбука",
+    "date_phrase": null,
+    "people": []
+   }
+  },
+  {
+   "id": "n059#0",
+   "ok": true,
+   "pred": {
+    "title": "Записатися на ТО машини",
+    "date_phrase": "через тиждень",
+    "people": []
+   },
+   "gold": {
+    "title": "Записатися на ТО машини",
+    "date_phrase": "через тиждень",
+    "people": []
+   }
+  },
+  {
+   "id": "n059#1",
+   "ok": true,
+   "pred": {
+    "title": "Шини міняти",
+    "date_phrase": null,
+    "people": []
+   },
+   "gold": {
+    "title": "Міняти шини при плюс семи",
+    "date_phrase": null,
+    "people": []
+   }
+  },
+  {
+   "id": "n060#0",
+   "ok": true,
+   "pred": {
+    "title": "Зустріч з Тарасом",
+    "date_phrase": null,
+    "people": [
+     "Тарас"
+    ]
+   },
+   "gold": {
+    "title": "Зустріч з Тарасом по звіту",
+    "date_phrase": null,
+    "people": [
+     "Тарас"
+    ]
+   }
+  },
+  {
+   "id": "n061#0",
+   "ok": true,
+   "pred": {
+    "title": "Показати чернетку керівнику",
+    "date_phrase": null,
+    "people": []
+   },
+   "gold": {
+    "title": "Показати чернетку керівнику",
+    "date_phrase": null,
+    "people": []
+   }
+  },
+  {
+   "id": "n062#0",
+   "ok": true,
+   "pred": {
+    "title": "Зустріч з Вікою і Марком",
+    "date_phrase": "Третього грудня о шостій вечора",
+    "people": [
+     "Віка",
+     "Марк"
+    ]
+   },
+   "gold": {
+    "title": "Зустріч з Вікою і Марком",
+    "date_phrase": "третього грудня о шостій вечора",
+    "people": [
+     "Віка",
+     "Марко"
+    ]
+   }
+  },
+  {
+   "id": "n063#0",
+   "ok": true,
+   "pred": {
+    "title": "Прибирання в під'їзді",
+    "date_phrase": "двадцять першого листопада о десятій",
+    "people": []
+   },
+   "gold": {
+    "title": "Прибирання в під'їзді",
+    "date_phrase": "двадцять першого листопада о десятій",
+    "people": []
+   }
+  }
+ ]
+}
