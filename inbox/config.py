@@ -14,7 +14,9 @@ DB_PATH = Path(os.getenv("INBOX_DB_PATH", ROOT / "inbox.db"))
 PORT = int(os.getenv("INBOX_PORT", "8777"))
 ICS_DIR = ROOT / "exports"
 
-PROJECTS_FILE = ROOT / "data" / "scripted" / "projects.json"
+# The eval uses the fixed project list of the scripted gold set; the running app uses my live list (data/projects.json).
+PROJECTS_FILE = Path(os.getenv("INBOX_PROJECTS_FILE", ROOT / "data" / "scripted" / "projects.json"))
+APP_PROJECTS_FILE = ROOT / "data" / "projects.json"
 
 
 def load_projects() -> list[dict]:

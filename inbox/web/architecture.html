@@ -6,111 +6,192 @@
   <title>Voice Inbox Architecture</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
-    :root { --page: #ebe7dd; --paper: #f3efe5; --ink: #1d1a14; --faded: #5b5345; --line: rgba(29,26,20,.22); --sun: #ffe14d; }
+    :root { --page: #ebe7dd; --paper: #f6f3eb; --ink: #1d1a14; --grey: #5b5345; --line: #cfc8b8; --sun: #ffe14d; --llm: #fbefb5; }
     * { box-sizing: border-box; }
-    body { margin: 0; background: var(--page); color: var(--ink); font-family: "Libre Caslon Text", Georgia, serif; -webkit-font-smoothing: antialiased; }
-    body::before { content: ""; position: fixed; inset: 0; pointer-events: none; opacity: .55; mix-blend-mode: multiply;
-      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.45  0 0 0 0 0.40  0 0 0 0 0.32  0 0 0 .35 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
+    body { margin: 0; background: var(--page); color: var(--ink); font-family: Inter, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
     a { color: inherit; }
-    .wrap { max-width: 1180px; margin: 0 auto; padding: 22px 40px 60px; position: relative; }
-    .mono { font-family: "IBM Plex Mono", monospace; }
-    .strip { display: flex; justify-content: space-between; font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--faded); }
-    .strip a { text-decoration: none; color: var(--ink); }
-    .masthead { font-family: "UnifrakturMaguntia", serif; font-weight: 400; font-size: clamp(40px, 6.5vw, 78px); text-align: center; margin: 14px 0 0; line-height: 1; }
-    .dateline { border-top: 3px double var(--ink); border-bottom: 1px solid var(--ink); margin-top: 12px; padding: 6px 2px; display: flex; justify-content: space-between; font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; }
-    .kicker { font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--faded); }
-    h1 { font-family: "Playfair Display", serif; font-weight: 900; font-size: clamp(30px, 4vw, 48px); line-height: 1.05; margin: 22px 0 8px; }
-    .lede { font-size: 18px; line-height: 1.55; max-width: 860px; margin: 0 0 26px; }
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 22px 40px 40px; }
+    .top { display: flex; justify-content: space-between; font-family: "IBM Plex Mono", monospace; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
+    .top a { text-decoration: none; }
+    h1 { font-family: "Playfair Display", serif; font-weight: 900; font-size: 46px; margin: 14px 0 4px; }
+    .norag { color: var(--ink); background: var(--sun); padding: 0 5px; margin-left: 6px; }
+    .sub { font-size: 17px; color: var(--grey); margin: 0 0 22px; padding-bottom: 16px; border-bottom: 3px double var(--ink); }
 
-    /* pipeline diagram */
-    .flow { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; border: 2px solid var(--ink); outline: 1px solid var(--ink); outline-offset: 4px; background: var(--paper); margin: 10px 4px 0; }
-    .stage { padding: 14px 14px 16px; border-left: 1px solid var(--ink); position: relative; cursor: pointer; transition: background .15s; }
-    .stage:first-child { border-left: 0; }
-    .stage:hover, .stage.on { background: #f8eebe; }
-    .stage .n { font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: .1em; color: var(--faded); }
-    .stage h3 { font-family: "Playfair Display", serif; font-size: 21px; margin: 4px 0 4px; line-height: 1.1; }
-    .stage .tool { font-style: italic; font-size: 13px; color: var(--faded); line-height: 1.35; min-height: 36px; }
-    .stage .m { margin-top: 10px; font-family: "IBM Plex Mono", monospace; font-size: 12px; line-height: 1.6; }
-    .stage .m b { font-size: 20px; font-family: "Playfair Display", serif; }
-    .stage:not(:last-child)::after { content: "→"; position: absolute; right: -9px; top: 14px; background: var(--paper); font-size: 15px; z-index: 2; padding: 0 1px; }
-    .tag { display: inline-block; font-family: "IBM Plex Mono", monospace; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; border: 1px solid var(--ink); padding: 1px 5px; margin-top: 8px; }
-    .tag.llm { background: var(--sun); }
-    .row-label { font-family: "Playfair Display", serif; font-style: italic; font-size: 19px; margin: 34px 0 6px; }
+    .head, .row { display: grid; grid-template-columns: 290px 1fr 190px; gap: 0 24px; align-items: center; }
+    .head { font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--grey); padding: 0 0 8px 46px; }
+    .head span:last-child { text-align: right; }
+    .steps { position: relative; }
+    .steps::before { content: ""; position: absolute; left: 17px; top: 20px; bottom: 20px; width: 2px; background: var(--ink); }
+    .row { position: relative; padding: 9px 0 9px 46px; }
+    .row + .row { border-top: 1px solid var(--line); }
+    .dot { position: absolute; left: 6px; top: 50%; transform: translateY(-50%); width: 24px; height: 24px; border-radius: 50%; background: var(--paper); border: 2px solid var(--ink); font: 600 10px "IBM Plex Mono", monospace; display: grid; place-items: center; }
+    .row.llm .dot { background: var(--sun); }
+    .name { font-weight: 700; font-size: 18px; line-height: 1.2; }
+    .how { font-size: 13.5px; color: var(--grey); margin-top: 2px; }
+    .chip { display: inline-block; font: 500 10.5px "IBM Plex Mono", monospace; letter-spacing: .06em; text-transform: uppercase; padding: 1px 6px; border: 1px solid var(--ink); margin-left: 6px; vertical-align: 2px; background: var(--paper); }
+    .row.llm .chip { background: var(--sun); }
+    .out { background: var(--paper); border: 1px solid var(--line); border-radius: 6px; padding: 9px 12px; font-size: 15.5px; line-height: 1.45; }
+    .row.llm .out { background: var(--llm); border-color: #e9d77f; }
+    .out code { font: 500 12px "IBM Plex Mono", monospace; background: var(--ink); color: var(--paper); padding: 1px 5px; border-radius: 3px; margin-right: 4px; }
+    .out b { font-weight: 600; }
+    .score { text-align: right; font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--grey); line-height: 1.3; }
+    .score b { display: block; font-family: "Playfair Display", serif; font-size: 28px; color: var(--ink); }
+    .ask { font-size: 13.5px; color: var(--grey); margin-top: 5px; }
+    .ask i { color: var(--ink); }
 
-    /* example walk-through */
-    .grid { display: grid; grid-template-columns: 1.25fr 1fr; gap: 34px; margin-top: 34px; padding-top: 22px; border-top: 3px double var(--ink); }
-    h2 { font-family: "Playfair Display", serif; font-size: 26px; margin: 0 0 4px; }
-    .sub { font-style: italic; font-size: 14px; color: var(--faded); margin: 0 0 14px; padding-bottom: 10px; border-bottom: 1px solid var(--ink); }
-    .say { font-family: "Playfair Display", serif; font-style: italic; font-size: 20px; line-height: 1.4; margin: 0 0 16px; }
-    ol.trace { list-style: none; padding: 0; margin: 0; }
-    ol.trace li { display: grid; grid-template-columns: 54px 1fr; gap: 12px; padding: 9px 0; border-top: 1px solid var(--line); font-size: 15px; line-height: 1.45; }
-    ol.trace li.on { background: #f8eebe; }
-    ol.trace .c { font-family: "IBM Plex Mono", monospace; font-size: 12px; font-weight: 500; padding-top: 2px; }
-    code { font-family: "IBM Plex Mono", monospace; font-size: 12.5px; background: var(--paper); border: 1px solid var(--line); padding: 0 4px; }
-    table { width: 100%; border-collapse: collapse; font-size: 14.5px; }
-    th, td { text-align: left; padding: 6px 4px; border-bottom: 1px solid var(--line); }
-    th { font-family: "IBM Plex Mono", monospace; font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--faded); border-bottom: 1px solid var(--ink); }
-    td.v { font-family: "IBM Plex Mono", monospace; text-align: right; }
-    td.win { font-weight: 700; }
-    .box { border: 2px solid var(--ink); outline: 1px solid var(--ink); outline-offset: 3px; padding: 14px 16px; margin-top: 26px; background: var(--paper); }
-    .box h3 { font-family: "Playfair Display", serif; font-size: 19px; margin: 0 0 6px; text-align: center; }
-    .box ul { margin: 0; padding-left: 18px; font-size: 14.5px; line-height: 1.55; }
-    .colophon { border-top: 3px double var(--ink); margin-top: 34px; padding-top: 8px; display: flex; justify-content: space-between; font-family: "IBM Plex Mono", monospace; font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--faded); }
-    @media (max-width: 900px) {
+    .q { display: inline-grid; place-items: center; width: 15px; height: 15px; border: 1px solid var(--grey); border-radius: 50%; font-size: 10px; cursor: help; margin-left: 4px; }
+    .note-score { font-size: 13.5px; color: var(--grey); margin: 6px 0 0 46px; }
+    .note-score b { color: var(--ink); }
+    h2 { font-family: "Playfair Display", serif; font-weight: 900; font-size: 34px; margin: 46px 0 4px; padding-top: 18px; border-top: 3px double var(--ink); }
+    .tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 16px 0 24px; }
+    .tile { background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; }
+    .tile b { display: block; font-family: "Playfair Display", serif; font-size: 34px; line-height: 1; }
+    .tile span { font-size: 13.5px; color: var(--grey); }
+    table.ev { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+    .ev th { text-align: left; font: 500 11px "IBM Plex Mono", monospace; letter-spacing: .08em; text-transform: uppercase; color: var(--grey); padding: 6px 8px; border-bottom: 1px solid var(--ink); }
+    .ev td { padding: 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+    .ev td.n { font-family: "IBM Plex Mono", monospace; text-align: right; white-space: nowrap; }
+    .ev th.n { text-align: right; }
+    .ev td.w { font-weight: 700; }
+    .ev .why { color: var(--grey); font-size: 13.5px; }
+    .two { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 28px; }
+    h3 { font-size: 17px; margin: 0 0 10px; }
+    .bar { display: grid; grid-template-columns: 110px 1fr 50px; gap: 10px; align-items: center; margin: 8px 0; font-size: 14px; }
+    .bar i { display: block; height: 14px; background: var(--ink); border-radius: 2px; }
+    .bar i.v { background: var(--sun); border: 1px solid var(--ink); }
+    .bar .n { font-family: "IBM Plex Mono", monospace; text-align: right; }
+    ul.fails { margin: 0; padding: 0; list-style: none; }
+    .fails li { padding: 8px 0; border-bottom: 1px solid var(--line); font-size: 14.5px; line-height: 1.45; }
+    .fails li b { display: block; }
+    .fails .fix { color: var(--grey); font-size: 13.5px; }
+    .final { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 20px; }
+    .e2e { background: var(--ink); color: var(--paper); border-radius: 8px; padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; }
+    .e2e .t { font-weight: 700; font-size: 17px; }
+    .e2e .d { font-size: 13px; color: #cfc6b4; margin-top: 3px; }
+    .e2e .n { font-family: "Playfair Display", serif; font-size: 40px; font-weight: 900; }
+    .e2e .n small { font-size: 18px; font-weight: 400; color: #cfc6b4; margin-left: 6px; }
+    .legend { display: flex; gap: 20px; align-items: center; justify-content: flex-end; font: 12px "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: .08em; color: var(--grey); }
+    .sw { display: inline-block; width: 14px; height: 14px; border-radius: 50%; border: 2px solid var(--ink); vertical-align: -3px; margin-right: 6px; background: var(--paper); }
+    .sw.y { background: var(--sun); }
+    @media (max-width: 860px) {
       .wrap { padding: 16px; }
-      .flow { grid-template-columns: 1fr 1fr; }
-      .stage { border-left: 0; border-top: 1px solid var(--ink); }
-      .stage::after { display: none; }
-      .grid { grid-template-columns: 1fr; }
+      .head { display: none; }
+      .row { grid-template-columns: 1fr; gap: 6px; }
+      .score { text-align: left; }
+      .score b { display: inline; font-size: 20px; margin-right: 6px; }
+      .final, .two { grid-template-columns: 1fr; }
+      .tiles { grid-template-columns: 1fr 1fr; }
     }
-
-    .pipe { margin-top: 40px; }
-    .io { text-align: center; font-family: "Playfair Display", serif; font-size: 22px; margin: 0 0 22px; }
-    .io.out { margin: 26px 0 0; font-family: "Libre Caslon Text", serif; font-size: 20px; }
-    .pill { font-family: "IBM Plex Mono", monospace; font-size: 12px; text-transform: uppercase; border: 1px solid var(--ink); padding: 2px 7px; margin-right: 4px; vertical-align: 2px; }
-    .down { text-align: center; font-size: 28px; margin: 10px 0; }
-    .stage { padding: 22px 18px; text-align: center; cursor: default; }
-    .stage h3 { font-size: 24px; margin: 8px 0 2px; }
-    .stage .tool { min-height: 0; font-size: 15px; margin: 0; }
-    .stage .m { font-size: 13px; margin-top: 12px; }
-    .stage .m b { font-size: 30px; }
-    .stage.llm { background: #fbf0bd; }
-    .stage.e2e { background: var(--ink); color: var(--paper); }
-    .stage.e2e .tool, .stage.e2e .n { color: #cfc6b4; }
-    .stage:not(:last-child)::after { top: 50%; transform: translateY(-50%); }
-    .stage.e2e::after { display: none; }
-    .legend { text-align: center; font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--faded); margin-top: 30px; }
-    .sw { display: inline-block; width: 12px; height: 12px; background: #fbf0bd; border: 1px solid var(--ink); vertical-align: -2px; }
-    .sw.plain { background: var(--paper); }
   </style>
 </head>
 <body>
 <div class="wrap">
-  <div class="strip"><a href="/">← Inbox</a><a href="/gazette">Gazette →</a></div>
-  <p class="masthead">How it works</p>
-  <div class="dateline"><span>Voice note → tasks · events · notes · ideas</span><span>100% local · no cloud</span></div>
+  <div class="top"><a href="/">← Inbox</a><a href="/gazette">Gazette →</a></div>
+  <h1>How one voice note becomes tasks</h1>
+  <p class="sub">9 steps, all on this laptop. Each step is evaluated on its own.</p>
 
-  <div class="pipe">
-    <div class="io">🎙️ <i>«Треба купити молоко. І в четвер о третій дзвінок з Андрієм.»</i></div>
-    <div class="flow">
-      <div class="stage"><span class="n">C1</span><h3>Speech → text</h3><p class="tool">Parakeet</p><div class="m">WER <b>0.18</b></div></div>
-      <div class="stage"><span class="n">C2</span><h3>Clean up</h3><p class="tool">rules</p><div class="m">WER <b>0.18</b></div></div>
-      <div class="stage llm"><span class="n">C3</span><h3>Split &amp; type</h3><p class="tool">gemma3</p><div class="m">F1 <b>0.96</b></div></div>
-      <div class="stage llm"><span class="n">C4</span><h3>Fields</h3><p class="tool">gemma3</p><div class="m">title <b>0.96</b></div></div>
-      <div class="stage"><span class="n">C5</span><h3>Dates</h3><p class="tool">rules</p><div class="m">acc <b>0.98</b></div></div>
+  <div class="head"><span>Step</span><span>What the note looks like after it</span><span>Eval score <span class="q" title="Each step has its own test on 63 notes with correct answers. This is that test's main number. ↑ higher is better, ↓ lower is better.">?</span></span></div>
+  <div class="steps">
+    <div class="row">
+      <span class="dot">1</span>
+      <div><div class="name">Speech → text <span class="chip">model</span></div><div class="how">Parakeet TDT v3</div></div>
+      <div class="out">«треба купити молоко і в четвер о третій дзвінок з вікою по диплому»</div>
+      <div class="score"><b>0.18</b>word error rate ↓</div>
     </div>
-    <div class="down">↓</div>
-    <div class="flow">
-      <div class="stage llm"><span class="n">C6</span><h3>Project</h3><p class="tool">gemma3</p><div class="m">acc <b>0.80</b></div></div>
-      <div class="stage"><span class="n">C7</span><h3>Ask if missing</h3><p class="tool">rules</p><div class="m">P <b>1.00</b></div></div>
-      <div class="stage"><span class="n">C8</span><h3>Save · .ics</h3><p class="tool">SQLite</p><div class="m">valid <b>1.00</b></div></div>
-      <div class="stage llm"><span class="n">C9</span><h3>Gazette</h3><p class="tool">gemma3</p><div class="m">bad ids <b>0.00</b></div></div>
-      <div class="stage e2e"><span class="n">E2E</span><h3>Whole note</h3><p class="tool">text · audio</p><div class="m"><b>0.60</b> · 0.51</div></div>
+    <div class="row">
+      <span class="dot">2</span>
+      <div><div class="name">Clean up <span class="chip">rules</span></div><div class="how">regex: drops «ну», «типу», «коротше», «е-е» and repeated words; fixes apostrophes, spaces, capitals</div></div>
+      <div class="out">«Треба купити молоко. І в четвер о третій дзвінок з Вікою по диплому.»</div>
+      <div class="score"><b>0.18</b>word error rate ↓</div>
     </div>
-    <div class="io out">✓ <span class="pill">task</span> купити молоко &nbsp;&nbsp; <span class="pill">event</span> Чт 15:00 · Андрій</div>
-    <p class="legend"><span class="sw"></span> LLM &nbsp;&nbsp; <span class="sw plain"></span> rules / code</p>
+    <div class="row llm">
+      <span class="dot">3</span>
+      <div><div class="name">Split &amp; type <span class="chip">LLM</span></div><div class="how">gemma3:12b · one call</div></div>
+      <div class="out"><code>task</code> купити молоко &nbsp;·&nbsp; <code>event</code> в четвер о третій дзвінок з Вікою…</div>
+      <div class="score"><b>0.96</b>items split right ↑</div>
+    </div>
+    <div class="row llm">
+      <span class="dot">4</span>
+      <div><div class="name">Extract fields <span class="chip">LLM</span></div><div class="how">gemma3:12b · per item</div></div>
+      <div class="out">title <b>Дзвінок з Вікою</b> · date <b>«в четвер о третій»</b> · people <b>Віка</b> · hint <b>диплом</b></div>
+      <div class="score"><b>0.96</b>titles right ↑</div>
+    </div>
+    <div class="row">
+      <span class="dot">5</span>
+      <div><div class="name">Resolve date <span class="chip">rules</span></div><div class="how">Ukrainian rules → dateparser → LLM</div></div>
+      <div class="out">«в четвер о третій» → <b>Thu 19 Nov, 15:00</b></div>
+      <div class="score"><b>0.90</b>dates exactly right ↑</div>
+    </div>
+    <div class="row llm">
+      <span class="dot">6</span>
+      <div><div class="name">Link project <span class="chip">LLM</span></div><div class="how">picks from my 6 projects</div></div>
+      <div class="out">молоко → <b>Дім</b> · дзвінок → <b>Диплом</b> · no duplicates</div>
+      <div class="score"><b>0.80</b>right project ↑</div>
+    </div>
+    <div class="row">
+      <span class="dot">7</span>
+      <div><div class="name">Anything missing? <span class="chip">rules</span></div><div class="how">event without a day, «him» without a name</div></div>
+      <div class="out">✓ complete
+        <div class="ask">If I'd said «скинути <i>йому</i>» → it asks <i>«Кого саме?»</i>, and my answer goes back to step 5.</div></div>
+      <div class="score"><b>1.00</b>questions that were needed ↑</div>
+    </div>
+    <div class="row">
+      <span class="dot">8</span>
+      <div><div class="name">Save <span class="chip">code</span></div><div class="how">SQLite + .ics for Calendar</div></div>
+      <div class="out">2 cards on the board · the call opens in Calendar as <b>.ics</b></div>
+      <div class="score"><b>1.00</b>valid calendar files ↑</div>
+    </div>
+    <div class="row llm">
+      <span class="dot">9</span>
+      <div><div class="name">Morning gazette <span class="chip">LLM</span></div><div class="how">gemma3:12b · cites items by id only</div></div>
+      <div class="out">Thursday's agenda: <b>«Дзвінок з Вікою» at 15:00</b></div>
+      <div class="score"><b>0</b>made-up tasks ↓</div>
+    </div>
+  </div>
+
+  <div class="final">
+    <div class="e2e"><div><div class="t">Whole note fully correct</div><div class="d">every item, every field · text / my voice</div></div><div class="n">0.60<small>/ 0.51</small></div></div>
+    <div class="legend"><span><span class="sw y"></span>LLM</span><span><span class="sw"></span>rules / code / ASR</span></div>
+  </div>
+  <h2>How I evaluated it</h2>
+  <p class="sub" style="border:0;margin-bottom:0">Every step is tested on its own, on data with correct answers. Steps after speech are tested on clean text, so speech errors don't hide other problems.</p>
+  <div class="tiles">
+    <div class="tile"><b>63</b><span>scripted notes in my style, with correct answers for every field</span></div>
+    <div class="tile"><b>84</b><span>gold items: 43 tasks, 28 events, 7 ideas, 6 notes</span></div>
+    <div class="tile"><b>62</b><span>of them recorded with my own voice, to test speech → text</span></div>
+    <div class="tile"><b>30</b><span>extra date phrases written after the rules, to test them honestly</span></div>
+  </div>
+
+  <table class="ev">
+    <tr><th>Step</th><th>Metric · why this one</th><th class="n">gemma3 12b</th><th class="n">qwen3 14b</th></tr>
+    <tr><td>1 Speech</td><td>Word error rate <span class="why">· standard for ASR; names and dates checked separately (0.76)</span></td><td class="n">0.18</td><td class="n">—</td></tr>
+    <tr><td>3 Split &amp; type</td><td>Split F1, type macro-F1 <span class="why">· macro, because there are 43 tasks but only 7 ideas</span></td><td class="n w">0.96 · 0.98</td><td class="n">0.98 · 0.96</td></tr>
+    <tr><td>4 Fields</td><td>Title match, people F1 <span class="why">· titles get paraphrased, so token overlap, not exact</span></td><td class="n w">0.96 · 0.91</td><td class="n">0.94 · 0.83</td></tr>
+    <tr><td>5 Dates</td><td>Exact datetime <span class="why">· one hour off is simply wrong</span></td><td class="n">0.98 / 0.90 held-out</td><td class="n">same rules</td></tr>
+    <tr><td>6 Project</td><td>Accuracy <span class="why">· embeddings only reached 0.60</span></td><td class="n">0.80</td><td class="n w">0.87</td></tr>
+    <tr><td>7 Ask</td><td>Precision / recall of asking <span class="why">· annoying me vs. missing info</span></td><td class="n w">1.00 / 0.88</td><td class="n">1.00 / 0.50</td></tr>
+    <tr><td>Whole note</td><td>Every item fully correct <span class="why">· the real goal: no editing needed</span></td><td class="n">0.60</td><td class="n">0.60</td></tr>
+  </table>
+  <p class="note-score"><b>Kept gemma:</b> same overall score, but qwen misses half of «who is <i>him</i>?». A wrong project I notice; a task with no name I don't.</p>
+
+  <div class="two">
+    <div>
+      <h3>Text vs. my voice: whole note right</h3>
+      <div class="bar"><span>from text</span><i style="width:60%"></i><span class="n">0.60</span></div>
+      <div class="bar"><span>from my voice</span><i class="v" style="width:51%"></i><span class="n">0.51</span></div>
+      <p class="note-score" style="margin-left:0">One speech error early on breaks every step after it: «в четвер <b>о</b> третій» heard as «в четвер-третій» glued the call onto the shopping task.</p>
+    </div>
+    <div>
+      <h3>Why it's not higher, and the fix</h3>
+      <ul class="fails">
+        <li><b>English words in speech</b>«бекенд» → «бакет», «NLP» → «Нолпі» <span class="fix">→ custom vocabulary</span></li>
+        <li><b>Dates: 0.98 → 0.90 on new phrases</b>«на вихідних», «третього числа» <span class="fix">→ more rules (kept out on purpose)</span></li>
+        <li><b>Projects</b>mostly my own fuzzy labels: is a gift for mom «Дім»? <span class="fix">→ clearer labelling rules</span></li>
+        <li><b>Strict titles</b>«Закинути гроші на телефон» ≠ «Поповнити телефон» <span class="fix">→ a softer, meaning-based metric</span></li>
+      </ul>
+    </div>
   </div>
 </div>
 </body>

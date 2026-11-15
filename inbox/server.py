@@ -3,6 +3,7 @@
 Run: uv run inbox-server   ->  http://127.0.0.1:8777/
 """
 
+import os
 import shutil
 import tempfile
 import threading
@@ -17,6 +18,9 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
 from inbox import config, pipeline, store
+
+if "INBOX_PROJECTS_FILE" not in os.environ and config.APP_PROJECTS_FILE.exists():
+    config.PROJECTS_FILE = config.APP_PROJECTS_FILE  # live project list, not the eval fixture
 
 app = FastAPI(title="Voice Inbox")
 WEB_DIR = Path(__file__).parent / "web"

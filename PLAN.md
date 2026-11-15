@@ -72,12 +72,12 @@ flowchart TD
 `INBOX_LLM_MODEL`. The model comparison is the report's main "why scores differ" section.
 
 ### One input through the system (for the video walkthrough)
-1. "Треба купити молоко. І в четвер о третій дзвінок з Андрієм по курсовій."
+1. "Треба купити молоко. І в четвер о третій дзвінок з Вікою по диплому."
 2. **C1** produces the raw text, **C2** cleans it.
-3. **C3** returns 2 items: `task` "купити молоко" and `event` "в четвер о третій дзвінок з Андрієм по курсовій".
-4. **C4** extracts the event fields: date_phrase = "в четвер о третій", people = [Андрій], project hint = "курсова".
+3. **C3** returns 2 items: `task` "купити молоко" and `event` "в четвер о третій дзвінок з Вікою по диплому".
+4. **C4** extracts the event fields: date_phrase = "в четвер о третій", people = [Віка], project hint = "диплом".
 5. **C5** resolves "в четвер о третій" relative to the recording time into the next Thursday at 15:00.
-6. **C6** links the event to the project "Курсова"; no duplicates found.
+6. **C6** links the event to the project "Диплом"; no duplicates found.
 7. **C7**: both items complete, so no question is asked.
 8. **C8** saves to SQLite, writes an `.ics`, and the menu-bar popover shows both items.
 

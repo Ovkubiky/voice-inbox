@@ -31,8 +31,8 @@ Everything runs locally on a MacBook. There are no paid APIs, and nothing leaves
 
 - **User:** me.
   - 412 dictations in two months.
-  - One thought-dump usually holds 2–4 different things: *«купити молоко, і в четвер о третій дзвінок з Андрієм по
-    курсовій»*.
+  - One thought-dump usually holds 2–4 different things: *«купити молоко, і в четвер о третій дзвінок з Вікою по
+    диплому»*.
   - Writing it down isn't the annoying part. Sorting it afterwards is.
 - **What's out there:**
   - AudioPen, Todoist Ramble and Mem are paid, cloud-only, and weak at Ukrainian relative dates
@@ -123,13 +123,13 @@ flowchart LR
 
 **One input through the system:**
 
-> «Треба купити молоко. І в четвер о третій дзвінок з Андрієм по курсовій.»
+> «Треба купити молоко. І в четвер о третій дзвінок з Вікою по диплому.»
 
 1. **C1/C2:** audio → clean text, in ~0.2 s.
-2. **C3:** two items, `task` «купити молоко» and `event` «в четвер о третій дзвінок з Андрієм по курсовій».
-3. **C4:** for the event, the date phrase is «в четвер о третій», people are [Андрій], and the project hint is «курсова».
+2. **C3:** two items, `task` «купити молоко» and `event` «в четвер о третій дзвінок з Вікою по диплому».
+3. **C4:** for the event, the date phrase is «в четвер о третій», people are [Віка], and the project hint is «диплом».
 4. **C5:** next Thursday, 15:00. The rule is "hours 1–7 mean PM".
-5. **C6:** the event goes to «Курсова» and the milk to «Дім»; no duplicates.
+5. **C6:** the event goes to «Диплом» and the milk to «Дім»; no duplicates.
 6. **C7:** both items are complete, so no question.
    *(Say «скинути йому презентацію» instead, and it asks «Кого саме стосується…?».)*
 7. **C8:** both items are saved; the event gets an `.ics` file. Both cards appear on the board.
